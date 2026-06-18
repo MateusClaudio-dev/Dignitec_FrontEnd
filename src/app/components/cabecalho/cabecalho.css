@@ -1,0 +1,128 @@
+:root {
+    --primaria-branca: #ffff;
+    --secundaria-laranja: oklab(74.836% 0.07657 0.14457);
+    --terciaria-preto: black;
+}
+
+.icons_menu {
+  display: none;
+}
+
+label {
+  display: none;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;           
+    padding: 10px 20px;            
+    background-color: var(--primaria-branca);     
+    gap: 20px;                       
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); 
+}
+
+.cabecalho__logo__img {
+    width: 70px;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+.cabecalho__campo-pesquisa {
+    flex-grow: 1; /* Permite que a busca ocupe o espaço do meio */
+    max-width: 300px;   
+}
+
+.cabecalho__campo-pesquisa input {
+    width: 100%;                   
+    padding: 8px 2px;
+    border: 1px solid var(--secundaria-laranja);
+    border-radius: 4px;
+}
+
+
+.list-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;                     
+}
+
+.list-menu a:hover {
+  font-weight: bold;
+  border-bottom: 1px solid var(--secundaria-laranja);
+  color: var(--secundaria-laranja);
+}
+
+
+.list-menu a {
+   padding: 3px;
+   text-decoration: none;
+    color:var(--terciaria-preto);
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;                      
+    white-space: nowrap;          
+}
+
+.container__marketing {
+  margin-right: 1%;
+  width: 20%;
+  padding: 5px 0;
+  background-color: var(--primaria-branca);
+  overflow: hidden; /* Esconde o texto que sai da tela */
+}
+
+.container__marketing__content {
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  display: flex;
+  width: max-content;
+  color: var(--secundaria-laranja);
+}
+
+.letreiro-loop {
+  display: inline-flex;
+  white-space: nowrap;
+  gap: 70px; 
+  padding-right: 200px; 
+  animation: correrLetreiro 10s linear infinite; 
+  color: var(--secundaria-laranja);
+}
+
+@keyframes correrLetreiro {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); } /* Move exatamente metade do bloco duplicado */
+}
+
+.letreiro-loop:hover {
+  animation-play-state: paused;
+}
+
+.letreiro-loop span:nth-child(1):hover,
+.letreiro-loop span:nth-child(5):hover {
+  color: blue; 
+  cursor: pointer;
+}
+
+.letreiro-loop span:nth-child(2):hover,
+.letreiro-loop span:nth-child(6):hover {
+  color: var(--secundaria-laranja); /* Verde */
+  cursor: pointer;
+}
+
+
+.letreiro-loop span:nth-child(3):hover,
+.letreiro-loop span:nth-child(7):hover {
+  color: green; /* Cinza */
+  cursor: pointer;
+}
+
+.letreiro-loop span:nth-child(4):hover,
+.letreiro-loop span:nth-child(8):hover {
+  color: gray; /* Cinza */
+  cursor: pointer;
+}
