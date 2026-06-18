@@ -1,0 +1,78 @@
+.hero-main {
+  max-height: 550px;
+  width: 100%;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.localizacao {
+  margin-left: 1.5%;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+}
+
+/* lista-anuncios - DADOS DE ANUNCIOS DO BD */
+#lista-anuncios {
+  gap: 30px;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--primaria-branca);
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #f80909;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+} 
+
+.anuncio {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 390px;
+  margin-top: 10px;
+  max-height: 900px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(0, 0, 0.3);
+}
+
+.anuncio, .img-anuncio h2, p {
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.nomeProjeto {
+
+  margin-left: 1%;
+  color: #050505;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.img-anuncio {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.descricao {
+   font-size: 1rem;
+}
+
+.contatos {
+  background-color: var(--secundaria-laranja);
+}
