@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HomeService } from '../../service/home.service';
-import { Cabecalho } from '../cabecalho/cabecalho';
+import { Cabecalho } from "../cabecalho/cabecalho";
+
 
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [Cabecalho],
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -38,7 +40,7 @@ listaDeAnuncios: any[] = [
   ngOnInit(): void {
     this.homeService.getAnuncios().subscribe({
       next: (dados) => {
-        this.listaDeAnuncios = dados
+        //this.listaDeAnuncios = dados
         console.log('Dados capturados', this.listaDeAnuncios)
       },
       error: (erro) => {

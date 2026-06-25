@@ -6,7 +6,7 @@ import { Cadastro } from "./components/cadastro/cadastro";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Cabecalho, Home, ],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
