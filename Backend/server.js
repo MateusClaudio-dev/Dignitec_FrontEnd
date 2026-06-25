@@ -31,7 +31,7 @@ const upload = multer({ storage });
 // Configura a conexão com o banco de dados MySQL
 // Node.js example
 
-
+// conexão localHost c/ mh maquina pessoal 
 //const db = mysql.createConnection({
 //  host: "localhost",
 //  user: "root",
