@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HomeService } from '../../service/home.service';
 import { Cabecalho } from "../cabecalho/cabecalho";
@@ -35,13 +35,16 @@ listaDeAnuncios: any[] = [
     }
   ];
 
-  constructor(private homeService: HomeService ) {}
+  constructor(
+    private homeService: HomeService,
+    private changeDetector: ChangeDetectorRef ) {}
 
   ngOnInit(): void {
     this.homeService.getAnuncios().subscribe({
       next: (dados) => {
-        //this.listaDeAnuncios = dados
+        this.listaDeAnuncios = dados
         console.log('Dados capturados', this.listaDeAnuncios)
+        this.changeDetector.detectChanges()
       },
       error: (erro) => {
         console.error('Erro ao conectar na API', erro);

@@ -1,46 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Ações Comunitárias</title>
+<header>
+  <app-cabecalho></app-cabecalho>
+</header>
 
-</head>
-<body>
-  <div class="container">
-    <header>
-        <h1>DIGNITEc</h1>
-      <a href="./list.html" class="home-icon">🏠</a>
-    </header>
+<main>
+  <h2>CADASTRE SUA AÇÃO COMUNITÁRIA</h2>
+  <p class="subtitle">Divulgue sua ação para toda comunidade e conquiste mais apoio</p>
 
+  <form (ngSubmit)="enviarDados()">
+    
+    <label for="nomeProjeto">Nome do projeto</label>
+    <input type="text" id="nomeProjeto" name="nomeProjeto" [(ngModel)]="dadosFormulario.nomeProjeto" placeholder="Digite o nome do projeto" required />
 
-    <h2>CADASTRE SUA AÇÃO COMUNITÁRIA</h2>
-    <p class="subtitle">Divulgue sua ação para toda comunidade e conquiste mais apoio</p>
+    <label for="categoria">Categoria</label>
+    <input type="text" id="categoria" name="categoria" [(ngModel)]="dadosFormulario.categoria" placeholder="Ex: Educação, Cultura..." required />
 
-    <form action="http://localhost:3000/anuncios" method="post" enctype="multipart/form-data">
-      <label for="nomeProjeto">Nome do projeto</label>
-      <input type="text" id="nomeProjeto" name="nomeProjeto" placeholder="Digite o nome do projeto" />
+    <label for="descricao">Descrição detalhada</label>
+    <textarea id="descricao" name="descricao" [(ngModel)]="dadosFormulario.descricao" placeholder="Descreva o projeto" required></textarea>
 
-      <label for="categoria">Categoria</label>
-      <input type="text" id="categoria" name="categoria" placeholder="Ex: Educação, Cultura..." />
+    <label for="localizacao">Localização</label>
+    <input type="text" id="localizacao" name="localizacao" [(ngModel)]="dadosFormulario.localizacao" placeholder="Cidade, bairro..." required />
 
-      <label for="descricao">Descrição detalhada</label>
-      <textarea id="descricao" name="descricao" placeholder="Descreva o projeto"></textarea>
+    <label for="contato">Contato</label>
+    <input type="text" id="contato" name="contato" [(ngModel)]="dadosFormulario.contato" placeholder="Email ou telefone" required />
 
-      <label for="localizacao">Localização</label>
-      <input type="text" id="localizacao" name="localizacao" placeholder="Cidade, bairro..." />
+    <label for="imagemCapa">Imagem de capa</label>
+    <input type="file" id="imagemCapa" (change)="aoSelecionarImagem($event)" accept="image/*" required />
 
-      <label for="contato">Contato</label>
-      <input type="text" id="contato" name="contato" placeholder="Email ou telefone" />
-
-      <label for="imagemCapa">Imagem de capa</label>
-      <input type="file" id="imagemCapa" name="imagemCapa" accept="image/*"/>
-
-      <button type="submit" value="upload">Cadastrar ação</button>
-    </form>
-  </div>
-
-<script src="../SCRIPTs/anuncio.js"></script>
-
-</body>
-</html>
+    <button type="submit">Cadastrar ação</button>
+  </form>
+</main>

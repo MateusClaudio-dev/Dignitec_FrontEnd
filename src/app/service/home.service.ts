@@ -14,7 +14,11 @@ export class HomeService {
   }
 
   getAnuncios(): Observable<any[]> {
-    return this.http.get<any[]>(this.API_URL)
+    return this.http.get<any[]>(this.API_URL);
+  }
+
+  cadastrarAnuncio(dados: FormData): Observable<any> {
+    return this.http.post(this.API_URL, dados);
   }
   
 }
