@@ -1,8 +1,32 @@
+<app-cabecalho></app-cabecalho>
 <main>
     <img class="hero-main" src="/IMAGES/img_mainDign.jpg" alt="">
     <section class="localizacao">
         <h1 class="sugestoes">Negocios perto de você</h1>
         <h2 class="cidade">Salvador ba</h2>
     </section>
-    <div id="lista-anuncios"></div>
+    <div id="lista-anuncios">
+        @if (listaDeAnuncios.length > 0) {
+            @for (anuncio of listaDeAnuncios; track anuncio.id) {
+                <div class="card-anuncio">
+                    <div class="capa-container">
+                        <img [src]=" 'http://localhost:3001/uploads/' + anuncio.imagemCapa " alt="">
+                    </div>
+                    <div class="conteudo-card">
+                        <span class="categoria">{{anuncio.categoria}}</span>
+                        <h3>{{anuncio.nomeProjeto}}</h3>
+                        <p class="descricao">{{anuncio.descricao}}</p>
+                    </div>
+                    <div class="rodape-card">
+                        <span>{{anuncio.localizacao}}</span>
+                        <span>{{anuncio.contato}}</span>
+                    </div>
+                </div>
+            } @empty {
+                <ng-template>
+                    <p>Ainda não négocios cadastrados</p>
+                </ng-template>
+            }
+        }
+    </div>
 </main>
