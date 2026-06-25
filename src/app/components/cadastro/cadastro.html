@@ -1,0 +1,31 @@
+<header>
+  <app-cabecalho></app-cabecalho>
+</header>
+
+<main>
+  <h2>CADASTRE SUA AÇÃO COMUNITÁRIA</h2>
+  <p class="subtitle">Divulgue sua ação para toda comunidade e conquiste mais apoio</p>
+
+  <form (ngSubmit)="enviarDados()">
+    
+    <label for="nomeProjeto">Nome do projeto</label>
+    <input type="text" id="nomeProjeto" name="nomeProjeto" [(ngModel)]="dadosFormulario.nomeProjeto" placeholder="Digite o nome do projeto" required />
+
+    <label for="categoria">Categoria</label>
+    <input type="text" id="categoria" name="categoria" [(ngModel)]="dadosFormulario.categoria" placeholder="Ex: Educação, Cultura..." required />
+
+    <label for="descricao">Descrição detalhada</label>
+    <textarea id="descricao" name="descricao" [(ngModel)]="dadosFormulario.descricao" placeholder="Descreva o projeto" required></textarea>
+
+    <label for="localizacao">Localização</label>
+    <input type="text" id="localizacao" name="localizacao" [(ngModel)]="dadosFormulario.localizacao" placeholder="Cidade, bairro..." required />
+
+    <label for="contato">Contato</label>
+    <input type="text" id="contato" name="contato" [(ngModel)]="dadosFormulario.contato" placeholder="Email ou telefone" required />
+
+    <label for="imagemCapa">Imagem de capa</label>
+    <input type="file" id="imagemCapa" (change)="aoSelecionarImagem($event)" accept="image/*" required />
+
+    <button type="submit">Cadastrar ação</button>
+  </form>
+</main>

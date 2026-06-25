@@ -1,0 +1,12 @@
+.hero-main {
+  max-height: 550px;
+  width: 100%;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.localizacao {
+  margin-left: 1.5%;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+}
+

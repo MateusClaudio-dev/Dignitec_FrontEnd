@@ -1,6 +1,6 @@
 :root {
     --primaria-branca: #ffff;
-    --secundaria-laranja: oklab(74.836% 0.07657 0.14457);
+    --secundaria-laranja: hsl(36, 92%, 52%);
     --terciaria-preto: black;
 }
 
@@ -58,8 +58,8 @@ label {
 
 
 .list-menu a {
-   padding: 3px;
-   text-decoration: none;
+    padding: 3px;
+    text-decoration: none;
     color:var(--terciaria-preto);
     font-family: sans-serif;
     display: flex;
