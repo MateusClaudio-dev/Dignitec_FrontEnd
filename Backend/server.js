@@ -4,6 +4,7 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const multer = require('multer'); // <--- novo 
 const path = require('path');
+const { error } = require('console');
 require("dotenv").config();
 
 
@@ -81,5 +82,36 @@ app.get('/anuncios', (req, res) => {
   });
 });
 
+// ROTA PARA EXCLUIR ANÚNCIOS
+app.delete('/anuncios/:id', (req, res) => {
+  const idAnuncio = req.params.id
+  const sql = 'DELETE FROM form_anuncio WHERE id = ?';
+
+  db.query(sql, [idAnuncio], (err, result) => {
+    if (err) {
+      console.error('Erro ao deletar', err);
+      return res.status(500).json({message: 'Erro ao excluir anúncio.'});
+    }
+    res.status(200).json({message: 'Anúncio removido da vitrine com sucesso'});
+  });
+});
+
+// ROTA PARA EDITAR ANÚNCIOS
+app.put('/anuncios/:id', upload.single('imagemCapa'), (req, res) => {
+  const idAnuncio = req.params.id
+  const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
+  const imagemCapa = req.file ? req.file.filename : null;
+  const sql = 'UPDATE form_anuncio SET nomeProjeto = ?, categoria = ?, descricao = ?, localizacao = ?, contato = ?, imagemCapa = ? WHERE id = ?';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err, 'Erro ao tentar editar anúncio')
+      return res.status(500).json({message: 'Erro ao tentar editar anuncio'})
+    }
+    return res.status(200).json({message: 'Anúncio editado com sucesso!'});
+  });
+});
+
 app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
- /*app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`)); */
+
