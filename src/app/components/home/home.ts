@@ -1,6 +1,6 @@
+import { AnuncioService } from './../../service/anuncios.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HomeService } from '../../service/anuncios.service';
 import { Cabecalho } from "../cabecalho/cabecalho";
 
 
@@ -36,12 +36,12 @@ listaDeAnuncios: any[] = [
   ];
 
   constructor(
-    private homeService: HomeService,
+    private anuncioService: AnuncioService,
     private changeDetector: ChangeDetectorRef ) {}
 
   ngOnInit(): void {
-    this.homeService.getAnuncios().subscribe({
-      next: (dados) => {
+    this.anuncioService.getAnuncios().subscribe({
+      next: (dados: any) => {
         this.listaDeAnuncios = dados
         console.log('Dados capturados', this.listaDeAnuncios)
         this.changeDetector.detectChanges()
