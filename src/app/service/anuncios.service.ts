@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class AnuncioService {
 
   private API_URL = 'http://localhost:3001/anuncios';
 

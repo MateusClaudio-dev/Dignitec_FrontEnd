@@ -1,8 +1,9 @@
-import { HomeService } from './../../service/home.service';
+
 import { Component, Input } from '@angular/core';
 import { Route, Router, RouterLink } from '@angular/router';
 import { Cabecalho } from "../cabecalho/cabecalho";
 import { FormsModule } from '@angular/forms';
+import { AnuncioService } from '../../service/anuncios.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -23,7 +24,7 @@ export class Cadastro {
   arquivoImagem: File | null = null;
 
   constructor(
-    private http: HomeService,
+    private http: AnuncioService,
     private router: Router
   ) {}
 

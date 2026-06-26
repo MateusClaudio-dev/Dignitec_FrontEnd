@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HomeService } from '../../service/home.service';
+import { HomeService } from '../../service/anuncios.service';
 import { Cabecalho } from "../cabecalho/cabecalho";
 
 

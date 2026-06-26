@@ -1,3 +1,4 @@
+import { AnuncioService } from './../../service/anuncios.service';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -7,4 +8,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './painel.html',
   styleUrl: './painel.css',
 })
-export class Painel {}
+export class Painel {
+
+  constructor(private AnuncioService: AnuncioService){}
+}
