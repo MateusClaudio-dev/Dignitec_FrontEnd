@@ -4,9 +4,18 @@
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
-.localizacao {
-  margin-left: 1.5%;
-  font-size: 1.6rem;
-  font-family: sans-serif;
+.card-anuncio {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+  max-width: 500px;
+  height: 500px;
+  background-color: hsl(31, 83%, 82%);
+}
+
+.capa-container img {
+  max-height: 200px;
+  
 }
 
