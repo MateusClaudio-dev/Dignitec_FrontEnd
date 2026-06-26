@@ -20,5 +20,13 @@ export class HomeService {
   cadastrarAnuncio(dados: FormData): Observable<any> {
     return this.http.post(this.API_URL, dados);
   }
+
+  editarAnuncios(id: number, dados: FormData): Observable<any> {
+    return this.http.put(`${this.API_URL}/${id}`, dados);
+  }
+
+  deletarAnuncios(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URL}/${id}`);
+  }
   
 }
