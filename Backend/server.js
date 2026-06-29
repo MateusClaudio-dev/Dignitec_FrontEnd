@@ -57,13 +57,11 @@ db.connect((err) => {
 
 // Rota POST com upload da imagem
 app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
-  console.log("Entrei  na função")
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
   const imagemCapa = req.file ? req.file.filename : null; 
-  console.log("Salvei o body")
   const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa) VALUES (?, ?, ?, ?, ?, ?)';
   const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa];
-  console.log('cheguei até aqui')
+
   db.query(sql, values, (err) => {
     if (err) {
       console.error('Erro ao inserir:', err);
@@ -78,7 +76,15 @@ app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
 app.get('/anuncios', (req, res) => {
   db.query('SELECT * FROM form_anuncio', (err, results) => {
     if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
-    else res.json(results);
+    else {
+      const anuncio_Com_Imagem_Tratada = results.map(anuncio => {
+        return {
+         ...anuncio, 
+         imagemURL: anuncio.imagemCapa ? `http://localhost:${port}/uploads/${anuncio.imagemCapa}` : 'assets/sem-imagem.png'
+        };
+      })
+      res.json(anuncio_Com_Imagem_Tratada);
+    }
   });
 });
 

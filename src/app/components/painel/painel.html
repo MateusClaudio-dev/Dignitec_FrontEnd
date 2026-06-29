@@ -4,41 +4,43 @@
     <p>Gerencie suas publicações e acompanhe o desempenho em tempo real.</p>
   </header>
 
-  <!-- Se o anunciante não tiver nenhum anúncio ainda -->
-  <div *ngIf="meusAnuncios.length === 0" class="sem-anuncios">
-    <p>Você ainda não possui nenhum anúncio cadastrado.</p>
-    <button routerLink="/cadastrar">Criar meu primeiro anúncio</button>
-  </div>
-
-  <!-- Tabela/Lista de Anúncios -->
-  <div *ngIf="meusAnuncios.length > 0" class="lista-anuncios">
-    <div *ngFor="let anuncio of meusAnuncios" class="anuncio-card">
-      
-      <!-- Miniatura da Imagem do Anúncio -->
-      <div class="anuncio-thumb">
-        <img [src]="anuncio.imagemUrl" alt="Imagem do projeto {{ anuncio.nomeProjeto }}">
-      </div>
-
-      <!-- Informações do Anúncio -->
-      <div class="anuncio-info">
-        <h3>{{ anuncio.nomeProjeto }}</h3>
-        <p class="metrica-cliques">
-          <i class="icone-click"></i> 
-          <strong>{{ anuncio.quantidadeClicks || 0 }}</strong> cliques recebidos
-        </p>
-      </div>
-
-      <!-- Botões de Ação Mecanizados -->
-      <div class="anuncio-acoes">
-        <button class="btn-acao btn-editar" title="Editar Anúncio">
-            <span class="material-icons">edit</span>
-        </button>
-
-        <button class="btn-acao btn-excluir" (click)="excluirAnuncio(anuncio.id)" title="Excluir Anúncio">
-            <span class="material-icons">delete</span>
-        </button>
-        </div>
-
+  @if (meusAnuncios.length === 0) {
+    <div class="sem-anuncios">
+      <p>Você ainda não possui nenhum anúncio cadastrado.</p>
+      <button routerLink="/cadastrar">Criar meu primeiro anúncio</button>
     </div>
-  </div>
+  }
+
+  @if (meusAnuncios.length > 0) {
+    <div class="lista-anuncios">
+      @for (anuncio of meusAnuncios; track anuncio.id) {
+        <div class="anuncio-card">
+          
+          <div class="anuncio-thumb">
+            <img [src]="anuncio.imagemURL" alt="Imagem do projeto {{ anuncio.nomeProjeto }}">
+          </div>
+
+          <div class="anuncio-info">
+            <h3>{{ anuncio.nomeProjeto }}</h3>
+            <h5>{{anuncio.descricao}}</h5>
+            <p class="metrica-cliques">
+              <i class="icone-click"></i> 
+              <strong>{{ anuncio.quantidadeClicks || 0 }}</strong> cliques recebidos
+            </p>
+          </div>
+
+          <div class="anuncio-acoes">
+            <button class="btn-acao btn-editar" title="Editar Anúncio">
+              <span class="material-icons">edit</span>
+            </button>
+
+            <button class="btn-acao btn-excluir" (click)="excluirAnuncio(anuncio.id)" title="Excluir Anúncio">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+
+        </div>
+      }
+    </div>
+  }
 </div>
