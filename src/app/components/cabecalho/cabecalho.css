@@ -1,8 +1,4 @@
-:root {
-    --primaria-branca: #ffff;
-    --secundaria-laranja: hsl(36, 92%, 52%);
-    --terciaria-preto: black;
-}
+
 
 .icons_menu {
   display: none;
@@ -13,17 +9,17 @@ label {
 }
 
 .cabecalho {
-    display: flex;
-    justify-content: space-evenly; 
-    align-items: center;           
-    padding: 10px 20px;            
-    background-color: var(--primaria-branca);     
-    gap: 20px;                       
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); 
+  gap: 20px;
+  display: flex;
+  padding: 11px 20px;
+  align-items: center;     
+  justify-content: space-evenly; 
+  background-color: #ffff;                     
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); 
 }
 
 .cabecalho__logo__img {
-    width: 70px;
+    width: 60px;
     height: auto;
     border-radius: 10px;
 }
@@ -37,7 +33,7 @@ label {
 .cabecalho__campo-pesquisa input {
     width: 100%;                   
     padding: 8px 2px;
-    border: 1px solid var(--secundaria-laranja);
+    border: 1px solid #f7720c;
     border-radius: 4px;
 }
 
@@ -50,13 +46,6 @@ label {
     gap: 25px;                     
 }
 
-.list-menu a:hover {
-  font-weight: bold;
-  border-bottom: 1px solid var(--secundaria-laranja);
-  color: var(--secundaria-laranja);
-}
-
-
 .list-menu a {
     padding: 3px;
     text-decoration: none;
@@ -65,7 +54,13 @@ label {
     display: flex;
     align-items: center;
     gap: 5px;                      
-    white-space: nowrap;          
+    white-space: nowrap;    
+    transition: 0.3s;   
+}
+
+.list-menu a:hover {
+  font-weight: bold;
+  color: #d96b18;
 }
 
 .container__marketing {
@@ -125,4 +120,11 @@ label {
 .letreiro-loop span:nth-child(8):hover {
   color: gray; /* Cinza */
   cursor: pointer;
+}
+
+@media (max-width: 720px) {
+
+  .list-menu {
+    display: none;
+  }
 }
