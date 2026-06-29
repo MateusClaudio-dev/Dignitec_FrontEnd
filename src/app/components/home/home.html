@@ -10,7 +10,7 @@
             @for (anuncio of listaDeAnuncios; track anuncio.id) {
                 <div class="card-anuncio">
                     <div class="capa-container">
-                        <img [src]=" 'http://localhost:3001/uploads/' + anuncio.imagemCapa " alt="">
+                        <img [src]="anuncio.imagemURL" alt="">
                     </div>
                     <div class="conteudo-card">
                         <span class="categoria">Categoria: {{anuncio.categoria}}</span>

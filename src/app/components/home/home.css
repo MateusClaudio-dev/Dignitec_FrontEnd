@@ -1,21 +1,187 @@
-.hero-main {
-  max-height: 550px;
+/* ==========================================
+   ESTILIZAÇÃO GERAL DA HOME
+   ========================================== */
+main {
   width: 100%;
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', -apple-system, Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
-.card-anuncio {
+/* Banner Principal */
+.hero-main {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Seção de Títulos (Sugestões / Localização) */
+.localizacao {
+  text-align: start;
+  margin-bottom: 32px;
+}
+
+.localizacao .sugestoes {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.localizacao .cidade {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d96b18; /* Laranja marcante do Dignitec */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   A MÁGICA DA VITRINE LADO A LADO (FLEXBOX)
+   ========================================== */
+#lista-anuncios {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
+  flex-direction: row; /* Alinha na horizontal no computador */
+  flex-wrap: wrap;    /* Quebra a linha automaticamente se faltar espaço */
+  gap: 24px;          /* Espaçamento idêntico ao painel */
+  justify-content: start; /* Centraliza as fileiras de cards */
+}
+
+/* ==========================================
+   O CARD DE ANÚNCIO (ESTILO PROTÓTIPO)
+   ========================================== */
+.card-anuncio {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Sombra marcante do protótipo */
+  border: 1px solid #e2e8f0;
   box-sizing: border-box;
-  max-width: 500px;
-  height: 500px;
-  background-color: hsl(31, 83%, 82%);
+
+  /* Tamanho flexível: mínimo 320px no PC, máximo 380px */
+  flex: 1 1 320px;
+  max-width: 380px;
+
+  display: flex;
+  flex-direction: column; /* Elementos internos empilhados verticalmente */
+}
+
+/* Container da Imagem de Capa */
+.capa-container {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
 }
 
 .capa-container img {
-  max-height: 200px;
-  
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Conteúdo / Textos do Card */
+.conteudo-card {
+  flex-grow: 1; /* Faz esse bloco crescer para empurrar o rodapé para a base */
+}
+
+.conteudo-card .categoria {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #d96b18; /* Categoria destacada com a cor do seu logo */
+  background: rgba(217, 107, 24, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.conteudo-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.conteudo-card .descricao {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #334155;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
+}
+
+/* ==========================================
+   RODAPÉ DO CARD (BOTÃO LARANJA DE CONTATO)
+   ========================================== */
+.rodape-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto; /* Alinha perfeitamente na base do card */
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+/* Localização (Texto discreto superior) */
+.rodape-card span:first-child {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Contato/Telefone (Estilo exato do botão laranja do seu protótipo) */
+.rodape-card span:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d96b18; /* Laranja vibrante */
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 8px rgba(217, 107, 24, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   COMPORTAMENTO EXCLUSIVO MOBILE
+   ========================================== */
+@media (max-width: 480px) {
+  main {
+    padding: 12px;
+  }
+
+  .hero-main {
+    height: 180px;
+    border-radius: 10px;
+  }
+
+  .localizacao .sugestoes {
+    font-size: 1.5rem;
+  }
+
+  #lista-anuncios {
+    flex-direction: column; /* Transforma a vitrine em feed vertical */
+    align-items: center;
+  }
+
+  .card-anuncio {
+    width: 100%;
+    max-width: 100%; /* Pega a tela cheia do smartphone igual ao mockup */
+  }
+
+  .capa-container img {
+    height: 220px; /* Imagem ligeiramente maior no celular */
+  }
 }
 
