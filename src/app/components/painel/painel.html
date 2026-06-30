@@ -30,7 +30,7 @@
           </div>
 
           <div class="anuncio-acoes">
-            <button class="btn-acao btn-editar" title="Editar Anúncio">
+            <button [routerLink]="['/editar', anuncio.id]" class="btn-acao btn-editar" title="Editar Anúncio">
               <span class="material-icons">edit</span>
             </button>
 

@@ -52,7 +52,7 @@ export class Cadastro {
     next: (resposta) => {
       console.log('Anuncio cadastrado com sucesso', resposta);
       alert('Anuncio cadastrado com sucesso');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/painelAnunciante']);
     },
     error: (erro) => {
       console.error('erro ao salvar anúncio', erro);

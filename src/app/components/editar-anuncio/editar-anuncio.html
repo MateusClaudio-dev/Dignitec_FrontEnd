@@ -1,0 +1,35 @@
+<header>
+<app-cabecalho></app-cabecalho>
+</header>
+
+<main>
+  <h2>Painel de edição</h2>
+  <p class="subtitle">Divulgue sua ação para toda comunidade e conquiste mais apoio</p>
+
+  <form (ngSubmit)="salvarAlteracoes()">
+    
+    <label for="nomeProjeto">Nome do projeto</label>
+    <input type="text" id="nomeProjeto" name="nomeProjeto" [(ngModel)]="anuncio.nomeProjeto" placeholder="Digite o nome do projeto" required />
+
+    <label for="categoria">Categoria</label>
+    <input type="text" id="categoria" name="categoria" [(ngModel)]="anuncio.categoria" placeholder="Ex: Educação, Cultura..." required />
+
+    <label for="descricao">Descrição detalhada</label>
+    <textarea id="descricao" name="descricao" [(ngModel)]="anuncio.descricao" placeholder="Descreva o projeto" required></textarea>
+
+    <label for="localizacao">Localização</label>
+    <input type="text" id="localizacao" name="localizacao" [(ngModel)]="anuncio.localizacao" placeholder="Cidade, bairro..." required />
+
+    <label for="contato">Contato</label>
+    <input type="text" id="contato" name="contato" [(ngModel)]="anuncio.contato" placeholder="Email ou telefone" required />
+
+    <label for="imagemCapa">Imagem de capa</label>
+    <input type="file" id="imagemCapa" (change)="aoSelecionarImagem($event)" accept="image/*"/>
+
+    <div class="btn-acoes">
+        <button type="button" routerLink="/painelAnunciante">Cancelar</button>
+        <button type="submit">Salvar alterações</button> 
+    </div>
+
+  </form>
+</main>

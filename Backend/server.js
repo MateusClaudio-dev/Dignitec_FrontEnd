@@ -102,6 +102,53 @@ app.delete('/anuncios/:id', (req, res) => {
   });
 });
 
+// ROTA PARA EDITAR ANÚNCIOS 
+app.put('/anuncios/:id', upload.single('imagemCapa'), (req, res) => {
+  const idAnuncio = req.params.id;
+  const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
+  
+  // Se veio arquivo novo, usamos req.file.filename. Se não veio,  undefined  
+  let imagemCapa = req.file ? req.file.filename : null;
+
+  // buscar a imagem atual para não apagá-la
+  if (!req.file) {
+    const sqlBuscar = 'SELECT imagemCapa FROM form_anuncio WHERE id = ?';
+    db.query(sqlBuscar, [idAnuncio], (err, results) => {
+      if (err || results.length === 0) {
+        return res.status(500).json({ message: 'Erro ao localizar o anúncio.' });
+      }
+      
+      // Recupera o nome da imagem que já estava salva
+      imagemCapa = results[0].imagemCapa;
+      
+      // Executa o update mantendo a foto antiga
+      executarUpdate(nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio, res);
+    });
+  } else {
+    // Se veio imagem nova, faz o update direto com o novo arquivo
+    executarUpdate(nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio, res);
+  }
+});
+
+function executarUpdate(nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio, res) {
+  const sql = 'UPDATE form_anuncio SET nomeProjeto = ?, categoria = ?, descricao = ?, localizacao = ?, contato = ?, imagemCapa = ? WHERE id = ?';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err, 'Erro ao tentar editar anúncio');
+      return res.status(500).json({ message: 'Erro ao tentar editar anuncio' });
+    }
+    return res.status(200).json({ message: 'Anúncio editado com sucesso!' });
+  });
+}
+
+
+
+
+
+
+
 // ROTA PARA EDITAR ANÚNCIOS
 app.put('/anuncios/:id', upload.single('imagemCapa'), (req, res) => {
   const idAnuncio = req.params.id
