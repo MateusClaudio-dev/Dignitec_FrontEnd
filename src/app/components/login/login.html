@@ -1,1 +1,19 @@
-<p>login works!</p>
+<main>
+    <div class="logo-dign">
+      <img class="img-main" src="/IMAGES/logo-dgn.jpg" alt="">
+    </div>
+    <div class="container-form">
+        <form (ngSubmit)="enviarDados()">
+            <h1 class="title-fazerLogin">Fazer login</h1>
+            <label for="">Nome de usúario</label>
+            <input type="name" placeholder="" required>
+            <label for="senha">Senha</label>
+            <input type="password" placeholder="" required>
+            <div class="opcoes-de-entrada">
+                <a href="#"><small routerLink="/home">Navegar como visitante</small></a>
+                <a href="#" ><small routerLink="/criarConta">Criar conta</small></a>
+            </div>
+            <button routerLink="/CriarConta" type="submit">Entrar</button>
+         </form>
+    </div>
+</main>

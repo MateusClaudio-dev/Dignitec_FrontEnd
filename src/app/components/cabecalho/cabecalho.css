@@ -79,49 +79,6 @@ label {
   color: var(--secundaria-laranja);
 }
 
-.letreiro-loop {
-  display: inline-flex;
-  white-space: nowrap;
-  gap: 70px; 
-  padding-right: 200px; 
-  animation: correrLetreiro 10s linear infinite; 
-  color: var(--secundaria-laranja);
-}
-
-@keyframes correrLetreiro {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); } /* Move exatamente metade do bloco duplicado */
-}
-
-.letreiro-loop:hover {
-  animation-play-state: paused;
-}
-
-.letreiro-loop span:nth-child(1):hover,
-.letreiro-loop span:nth-child(5):hover {
-  color: blue; 
-  cursor: pointer;
-}
-
-.letreiro-loop span:nth-child(2):hover,
-.letreiro-loop span:nth-child(6):hover {
-  color: var(--secundaria-laranja); /* Verde */
-  cursor: pointer;
-}
-
-
-.letreiro-loop span:nth-child(3):hover,
-.letreiro-loop span:nth-child(7):hover {
-  color: green; /* Cinza */
-  cursor: pointer;
-}
-
-.letreiro-loop span:nth-child(4):hover,
-.letreiro-loop span:nth-child(8):hover {
-  color: gray; /* Cinza */
-  cursor: pointer;
-}
-
 @media (max-width: 720px) {
 
   .list-menu {
