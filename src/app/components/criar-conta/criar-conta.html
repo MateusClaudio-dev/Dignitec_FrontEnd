@@ -3,17 +3,26 @@
       <img class="img-main" src="/IMAGES/logo-dgn.jpg" alt="">
     </div>
     <div class="container-form">
-        <form >
-            <h1>Criar conta</h1>
+        <form (ngSubmit)="enviarDados()">
             <label for="">Nome de usúario</label>
             <input type="name" placeholder="" required>
+
             <label for="email">E-mail</label>
-            <input type="email" placeholder="" required>
+            <input type="email" name="email" required>
+
             <label for="senha">Senha</label>
-            <input type="password" placeholder="" required>
+            <input type="password" name="senha" required>
+
             <label for="confirmarSenha">Confirmar senha</label>
-            <input type="password" placeholder="" required>
-            <button type="submit">Criar conta</button>
+            <input type="password" name="confirmarSenha" required>
+
+            <select name="" id="">
+                <option value="Anunciante">Criar conta como</option>
+                <option value="usuario">Usúario</option>
+                <option value="anunciante">Anunciante</option>
+            </select>
+
+            <button routerLink="/home" type="submit">Salvar</button>
          </form>
     </div>
 </main>
