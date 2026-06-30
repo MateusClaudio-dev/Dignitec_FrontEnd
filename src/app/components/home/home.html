@@ -18,8 +18,9 @@
                         <p class="descricao">{{anuncio.descricao}}</p>
                     </div>
                     <div class="rodape-card">
-                        <span>{{anuncio.localizacao}}</span>
-                        <span>{{anuncio.contato}}</span>
+                        <a href="https://wa.me/{{ anuncio.contato }}" target="_blank" style="text-decoration: none;">
+                            <span>Entrar em contato</span>
+                        </a>
                     </div>
                 </div>
             } @empty {
