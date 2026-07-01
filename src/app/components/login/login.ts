@@ -37,4 +37,9 @@ export class Login {
       }
     })
   }
+
+  navegarComoVisitante(): void {
+    localStorage.clear()
+    this.route.navigate(['/home'])
+  }
 }
