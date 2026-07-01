@@ -24,7 +24,7 @@ listaDeAnuncios: any[] = [];
     this.anuncioService.getAnuncios().subscribe({
       next: (dados: any) => {
         this.listaDeAnuncios = dados
-        console.log('Dados capturados', this.listaDeAnuncios)
+        //console.log('Dados capturados', this.listaDeAnuncios)
         this.changeDetector.detectChanges()
       },
       error: (erro) => {

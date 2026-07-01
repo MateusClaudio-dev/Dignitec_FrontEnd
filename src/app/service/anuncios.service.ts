@@ -10,7 +10,7 @@ export class AnuncioService {
   private API_URL = 'http://localhost:3001/anuncios';
 
   constructor(private http: HttpClient) {
-    console.log(this.API_URL)
+    // console.log(this.API_URL)
   }
 
   getAnuncios(): Observable<any[]> {
