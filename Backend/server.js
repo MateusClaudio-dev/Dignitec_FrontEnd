@@ -55,7 +55,7 @@ db.connect((err) => {
   else console.log('Conectado ao MySQL com sucesso!');
 });
 
-// Rota para autenticação
+// Rota para criar conta
 app.post('/criarConta', (req, res) => {
   const {nome, email, senha, confirmarSenha, tipoConta} = req.body;
   const sql = 'INSERT INTO usuarios (nome, email, senha, tipoConta) VALUES (?, ?, ?, ?)';
@@ -67,6 +67,25 @@ app.post('/criarConta', (req, res) => {
       res.status(500).json({message: 'Erro ao tentar criar conta'});
     } else {
       res.status(201).json({message: 'Conta criada com sucesso'});
+    }
+  });
+})
+
+// Rota para fazer login (entrar com a conta)
+app.post('/login', (req, res) => {
+  const {nameUsuario, senha} = req.body;
+  const sql = 'SELECT * FROM usuarios WHERE nome = ?'
+
+  db.query(sql, [nameUsuario], (err, results) => {
+    if (err) return res.status(500).json({message: 'Erro no servidor'});
+    if (results.length === 0) return res.status(401).json({message: 'E-mail ou senha incorretos'});
+
+    const usuarioDoBanco = results[0]
+
+    if (senha === usuarioDoBanco.senha) {
+      res.status(200).json({message: 'Login realizado com sucesso'});
+    } else {
+      res.status(401).json({message: 'E-mail ou senha incorretos'})
     }
   });
 })

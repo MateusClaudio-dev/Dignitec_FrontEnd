@@ -7,10 +7,10 @@
         <form (ngSubmit)="enviarDados()">
             
             <label for="nome">Nome de usuário</label>
-            <input type="text" name="nome" [(ngModel)]="dadosCadastro.nome" placeholder="Digite seu nome" required>
+            <input type="text" name="nome" [(ngModel)]="dadosCadastro.nome" placeholder="Como devemos te chamar?" required>
 
             <label for="email">E-mail</label>
-            <input type="email" name="email" [(ngModel)]="dadosCadastro.email" required>
+            <input type="email" name="email" [(ngModel)]="dadosCadastro.email" placeholder="insira seu melhor e-mail" required>
 
             <label for="senha">Senha</label>
             <input type="password" name="senha" [(ngModel)]="dadosCadastro.senha" required>
@@ -19,7 +19,7 @@
             <input type="password" name="confirmarSenha" [(ngModel)]="dadosCadastro.confirmarSenha" required>
 
             <label for="tipo">Tipo de Conta</label>
-            <select name="tipoConta" [(ngModel)]="dadosCadastro.tipo" required>
+            <select name="tipoConta" [(ngModel)]="dadosCadastro.tipoConta" required>
                 <option value="" disabled selected>Criar conta como...</option>
                 <option value="usuario">Usuário Comum</option>
                 <option value="anunciante">Anunciante</option>

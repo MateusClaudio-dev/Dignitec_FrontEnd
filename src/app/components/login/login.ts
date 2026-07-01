@@ -1,12 +1,36 @@
+import { AuthService } from './../../service/auth.service';
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { email } from '@angular/forms/signals';
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
-  enviarDados() {}
+
+  dadosLogin = {
+    nameUsuario: '',
+    senha: ''
+  }
+
+  constructor(
+    private  auth: AuthService,
+    private route: Router
+  ) {}
+
+  fazerLogin() {
+    this.auth.fazerLogin(this.dadosLogin).subscribe({
+      next: (resposta) => {
+        this.route.navigate(['/home'])
+      },
+      error: (err) => {
+        console.error('Senha invalida ou usúario não encontrado', err)
+        alert('Senha invalida ou usúario não encontrado')
+      }
+    })
+  }
 }

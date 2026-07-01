@@ -1,6 +1,7 @@
+import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-criar-conta',
@@ -10,17 +11,35 @@ import { RouterLink } from "@angular/router";
   styleUrl: './criar-conta.css',
 })
 export class CriarConta implements OnInit {
-  enviarDados() {}
+
+  usuarios: any[] | null = null 
+
+    constructor(
+      private auth: AuthService,
+      private router: Router
+    ) {}
 
     ngOnInit(): void {
-      
+
     }
 
   dadosCadastro = {
-    nome: " ",
-    email: " ",
-    senha: " ",
-    confirmarSenha: " ",
-    tipo: " ",
+    nome: '',
+    email: '',
+    senha: '',
+    confirmarSenha: '',
+    tipoConta: ''
   }
+
+  enviarDados():void {
+    this.auth.criarConta(this.dadosCadastro).subscribe({
+      next: (res) => {
+        console.log('Conta criada com sucesso', res);
+        alert('Conta criada com sucesso')
+        this.router.navigate(['/login'])
+      },
+      error: (err) => console.error('Erro ao criar conta', err)
+    });
+  }
+  
 }
