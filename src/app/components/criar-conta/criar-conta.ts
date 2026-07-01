@@ -32,6 +32,20 @@ export class CriarConta implements OnInit {
   }
 
   enviarDados():void {
+    if (!this.dadosCadastro.nome.trim() || 
+        !this.dadosCadastro.email.trim()  || 
+        !this.dadosCadastro.senha.trim() || 
+        !this.dadosCadastro.confirmarSenha.trim() || 
+        !this.dadosCadastro.tipoConta ) {
+          alert('Preencha todos os campos')
+          return;
+        }
+
+        if (this.dadosCadastro.senha !== this.dadosCadastro.confirmarSenha) {
+          alert('As senhas não coincidem')
+          return;
+        }
+
     this.auth.criarConta(this.dadosCadastro).subscribe({
       next: (res) => {
         console.log('Conta criada com sucesso', res);

@@ -22,8 +22,13 @@ export class Login {
   ) {}
 
   fazerLogin() {
+    if (!this.dadosLogin.nameUsuario.trim() || !this.dadosLogin.senha.trim()) {
+      alert('Preencha todos os campos')
+      return;
+    }
     this.auth.fazerLogin(this.dadosLogin).subscribe({
       next: (resposta) => {
+        const usuarioLogado = localStorage.setItem('usuarioLogado', 'true');
         this.route.navigate(['/home'])
       },
       error: (err) => {
