@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cabecalho',
@@ -8,4 +8,11 @@ import { RouterLink } from "@angular/router";
   templateUrl: './cabecalho.html',
   styleUrl: './cabecalho.css',
 })
-export class Cabecalho {}
+export class Cabecalho {
+
+  constructor(private router: Router) {}
+  executarLogout(): void {
+    localStorage.clear();
+    this.router.navigate(["/login"]) 
+  }
+}

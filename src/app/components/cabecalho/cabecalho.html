@@ -29,7 +29,12 @@
                 <li><a routerLink="/painelAnunciante" >Meu painel <!--&#x24D8--></a></li>
                 </ul>
             </div>
-        </nav> 
+        </nav>
+
+        <div class="area-logout" (click)="executarLogout()">
+            <p>Sair</p>
+            <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão" >  
+        </div>
         
         <!--ICON MENU HAMBURGER-->
         <input class="icons_menu" type="checkbox" id="open-menu">

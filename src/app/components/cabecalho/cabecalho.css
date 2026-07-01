@@ -55,13 +55,37 @@ label {
     align-items: center;
     gap: 5px;                      
     white-space: nowrap;    
-    transition: 0.3s;   
+    transition: 0.5s;
 }
 
 .list-menu a:hover {
   font-weight: bold;
   color: #d96b18;
 }
+
+.area-logout {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 6px;
+  border: solid 1px orange;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03); 
+  transition: 0.5s;
+}
+
+.area-logout img {
+  height: 20px;
+}
+
+.area-logout:hover {
+  border: solid 1px black;
+}
+
 
 .container__marketing {
   margin-right: 1%;
