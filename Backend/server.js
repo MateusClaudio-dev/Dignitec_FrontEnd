@@ -55,7 +55,23 @@ db.connect((err) => {
   else console.log('Conectado ao MySQL com sucesso!');
 });
 
-// Rota POST com upload da imagem
+// Rota para autenticação
+app.post('/criarConta', (req, res) => {
+  const {nome, email, senha, confirmarSenha, tipoConta} = req.body;
+  const sql = 'INSERT INTO usuarios (nome, email, senha, tipoConta) VALUES (?, ?, ?, ?)';
+  const values = [nome, email, senha, tipoConta]
+
+  db.query(sql, values, (err) => {
+    if (err) {
+      console.error('Erro ao inserir', err);
+      res.status(500).json({message: 'Erro ao tentar criar conta'});
+    } else {
+      res.status(201).json({message: 'Conta criada com sucesso'});
+    }
+  });
+})
+
+// Rota de cadastro de anúncio
 app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
   const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
   const imagemCapa = req.file ? req.file.filename : null; 
@@ -142,29 +158,6 @@ function executarUpdate(nomeProjeto, categoria, descricao, localizacao, contato,
     return res.status(200).json({ message: 'Anúncio editado com sucesso!' });
   });
 }
-
-
-
-
-
-
-
-// ROTA PARA EDITAR ANÚNCIOS
-app.put('/anuncios/:id', upload.single('imagemCapa'), (req, res) => {
-  const idAnuncio = req.params.id
-  const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
-  const imagemCapa = req.file ? req.file.filename : null;
-  const sql = 'UPDATE form_anuncio SET nomeProjeto = ?, categoria = ?, descricao = ?, localizacao = ?, contato = ?, imagemCapa = ? WHERE id = ?';
-  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, idAnuncio];
-
-  db.query(sql, values, (err, result) => {
-    if (err) {
-      console.error(err, 'Erro ao tentar editar anúncio')
-      return res.status(500).json({message: 'Erro ao tentar editar anuncio'})
-    }
-    return res.status(200).json({message: 'Anúncio editado com sucesso!'});
-  });
-});
 
 app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
 
