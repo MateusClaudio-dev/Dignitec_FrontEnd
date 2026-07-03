@@ -32,4 +32,16 @@ listaDeAnuncios: any[] = [];
       }
     })
   }
+
+  entrarEmContato(idAnuncio: any) {
+    this.anuncioService.registarClique(idAnuncio).subscribe({
+      next: (result) => {
+        console.log('Clique computado no BD');
+      },
+      error: (err) => {
+        console.error('Erro ao computar clique NO BD', err);
+      }
+    });
+  }
+
 }

@@ -20,7 +20,7 @@
                         <h3>{{anuncio.nomeProjeto}}</h3>
                         <p class="descricao">{{anuncio.descricao}}</p>
                     </div>
-                    <div class="rodape-card">
+                    <div class="rodape-card" (click)="entrarEmContato(anuncio.id)">
                         <a href="https://wa.me/{{ anuncio.contato }}" target="_blank" style="text-decoration: none;">
                             <span>Entrar em contato</span>
                         </a>

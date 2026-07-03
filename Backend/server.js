@@ -121,9 +121,19 @@ app.post('/anuncios/:id/clique', (req, res) => {
   });
 })
 
-// Listar anúncios
+// Listar anúncios 
 app.get('/anuncios', (req, res) => {
-  db.query('SELECT * FROM form_anuncio', (err, results) => {
+const sql = `
+    SELECT 
+      tabela_anuncios.*, 
+      COUNT(tabela_cliques.id) AS quantidadeClicks 
+    FROM form_anuncio AS tabela_anuncios 
+    LEFT JOIN cliques_anuncios AS tabela_cliques 
+      ON tabela_anuncios.id = tabela_cliques.anuncio_id 
+    GROUP BY tabela_anuncios.id
+  `;
+
+  db.query(sql, (err, results) => {
     if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
     else {
       const anuncio_Com_Imagem_Tratada = results.map(anuncio => {

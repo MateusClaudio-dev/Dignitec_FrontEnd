@@ -28,5 +28,9 @@ export class AnuncioService {
   deletarAnuncios(id: number): Observable<any> {
     return this.http.delete(`${this.API_URL}/${id}`);
   }
+
+  registarClique(id: number): Observable<any> {
+    return this.http.post(`${this.API_URL}/${id}/clique`, {});
+  }
   
 }
