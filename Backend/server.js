@@ -107,6 +107,20 @@ app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
   });
 });
 
+// Recebmento de cliques 
+app.post('/anuncios/:id/clique', (req, res) => {
+  const anuncioId = req.params.id;
+  const sql = 'INSERT INTO cliques_anuncios (anuncio_id) VALUES (?)';
+
+  db.query(sql, [anuncioId], (err, result) => {
+    if (err) {
+      console.error('Erro ao registrar clique')
+      return res.status(500).json({message: 'Erro ao registar clique',});
+    }
+    return res.status(201).json({message: 'Clique computado com sucesso'})
+  });
+})
+
 // Listar anúncios
 app.get('/anuncios', (req, res) => {
   db.query('SELECT * FROM form_anuncio', (err, results) => {
