@@ -133,6 +133,12 @@ const sql = `
     GROUP BY tabela_anuncios.id
   `;
 
+  // Busque todos os dados dos anúncios da tabela form_anuncio.
+  // Vá na tabela cliques_anuncios e traga os cliques correspondentes, 
+  // cruzando o ID do anúncio com o ID do anúncio gravado no clique. 
+  // Junte e organize tudo separado por anúncio e, no final, conte quantos cliques cada um teve, 
+  // jogando o resultado na propriedade quantidadeClicks.
+
   db.query(sql, (err, results) => {
     if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
     else {
