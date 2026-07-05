@@ -103,7 +103,7 @@ db.query(sqlUsuarios, err => {
         console.error("Erro na tabela cliques_anuncios:", err)
         process.exit(1);
       }
-      console.log('Tabela cliques_anuncios criada!')
+      console.log('Tabela cliques_anuncios criada!');
       db.end(); 
     });
   });
