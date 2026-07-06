@@ -1,12 +1,24 @@
 <app-cabecalho></app-cabecalho>
 <main>
     <div class="hero-main">
-        <img class="img-hero-main" src="/IMAGES/img_mainDign.jpg" alt="">
+        <button class="btn-carrosel btn-anterior" (click)="imagemAnterior()">
+            <span class="icone">&lsaquo;</span>
+        </button>
+        @for (imagem of imagensHero; track $index ) {
+            <img 
+            class="img-hero-main" 
+            [src]="imagensHero"
+            [class.ativa] = "$index === indiceAtivo"
+            alt="Painel de Informações Dignitec">
+        }
+        <button class="btn-carrossel btn-proximo" (click)="proximaImagem()">
+            <span class="icone">&rsaquo;</span>
+        </button>
     </div>
     
     <section class="localizacao">
         <h1 class="sugestoes">Negocios perto de você</h1>
-        <h2 class="cidade">Salvador ba</h2>
+        <h2 class="cidade" >Salvador - BA</h2>
     </section>
     <div id="lista-anuncios">
         @if (listaDeAnuncios.length > 0) {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,6 +13,18 @@ export class AnuncioService {
     // console.log(this.API_URL)
   }
 
+  //Requisição de anúncios por proximidade
+  // listarAnunciosProximos(lat?: number, lng?: number): Observable<any[]> {
+  //   let params = new HttpParams();
+
+  //   if (lat && lng) {
+  //     params = params.set('lat', lat.toString());
+  //     params = params.set('lng', lng.toString());
+  //   }
+  //   return this.http.get<any[]>(this.API_URL, {params})
+  // }
+
+  // Rota (sem proximidade)
   getAnuncios(): Observable<any[]> {
     return this.http.get<any[]>(this.API_URL);
   }
