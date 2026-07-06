@@ -92,10 +92,10 @@ app.post('/login', (req, res) => {
 
 // Rota de cadastro de anúncio
 app.post('/anuncios', upload.single('imagemCapa'), (req, res) => {
-  const { nomeProjeto, categoria, descricao, localizacao, contato } = req.body;
+  const { nomeProjeto, categoria, descricao, localizacao, contato, latitude, longitude} = req.body;
   const imagemCapa = req.file ? req.file.filename : null; 
-  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa) VALUES (?, ?, ?, ?, ?, ?)';
-  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa];
+  const sql = 'INSERT INTO form_anuncio (nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  const values = [nomeProjeto, categoria, descricao, localizacao, contato, imagemCapa, latitude, longitude];
 
   db.query(sql, values, (err) => {
     if (err) {

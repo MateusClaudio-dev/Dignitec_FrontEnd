@@ -17,8 +17,9 @@
     <label for="descricao">Descrição detalhada</label>
     <textarea id="descricao" name="descricao" [(ngModel)]="dadosFormulario.descricao" placeholder="Descreva o projeto" required></textarea>
 
-    <label for="localizacao">Localização</label>
-    <input type="text" id="localizacao" name="localizacao" [(ngModel)]="dadosFormulario.localizacao" placeholder="Cidade, bairro..." required />
+    <label for="localizacao">Localização</label><small (click)="buscarCoordenadas()" style="color: orange; cursor: pointer;"  >Clique aqui para usar sua localização atual</small> <br>
+    <input type="text" id="localizacao" name="localizacao" [(ngModel)]="dadosFormulario.localizacao" placeholder="Endereço " required />
+    
 
     <label for="contato">Contato</label>
     <input type="text" id="contato" name="contato" [(ngModel)]="dadosFormulario.contato" placeholder="Email ou telefone" required />
