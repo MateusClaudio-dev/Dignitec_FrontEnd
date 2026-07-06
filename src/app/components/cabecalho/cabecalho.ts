@@ -11,7 +11,12 @@ import { Router, RouterLink } from "@angular/router";
 })
 export class Cabecalho {
 
+  menuAberto: boolean = false
   Anunciante: boolean = true
+
+  openMenu(): void { this.menuAberto = true };
+  outMenu(): void { this.menuAberto = false };
+  closeMenu(): void { this.menuAberto = false };
 
   constructor(private router: Router) {}
   executarLogout(): void {

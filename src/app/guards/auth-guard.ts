@@ -7,7 +7,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     if (logado === 'true') {
         return true
     } else {
-        alert('Para ter acesso a seção esteja logado')
+        alert('Para ter acesso esteja logado como anunciante')
         router.navigate(['/login'])
         return false
     }

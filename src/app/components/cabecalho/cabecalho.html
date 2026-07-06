@@ -9,86 +9,60 @@
 
 <body>
 <header>
-    @if (!Anunciante) {
         <div class="cabecalho">
         <div class="cabecalho__logo">
             <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">  
         </div>
 
-
-
         <div class="cabecalho__campo-pesquisa">
             <input type="text" placeholder="Buscar">
         </div>
-
-        <!--COONTEUDO DO MENU-->
-        <nav class="cabecalho__container-menu">
-            <div class="cabecalho__container-menu__content">
-                <ul class="list-menu">
-                <li><a routerLink="/login">Fazer login <!--&#128274--></a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="area-logout" (click)="executarLogout()">
-            <p>Sair</p>
-            <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão" >  
+        <div class="icon-open-menu" (click)="openMenu()">
+            <img src="/IMAGES/icon-menu.svg" alt="Finalizar sessão" >  
         </div>
-        
-        <!--ICON MENU HAMBURGER-->
-        <input class="icons_menu" type="checkbox" id="open-menu">
-        <label for="open-menu" class="check-btn">
-            <i class="fas fa-bars"></i>
-        </label>
-
-        <!--ICON FECHAMENTO MENU HAMBURGER-->
-        <input class="icons_menu" type="checkbox" id="exit-menu">
-        <label for="check" class="check-fechar">
-            <i class="fa-solid fa-xmark"></i>
-        </label>
     </div>
-    } 
-    
-    @if (Anunciante) {
-        <div class="cabecalho">
-        <div class="cabecalho__logo">
-            <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">  
-        </div>
-
-
-
-        <div class="cabecalho__campo-pesquisa">
-            <input type="text" placeholder="Buscar">
-        </div>
-
-        <!--COONTEUDO DO MENU-->
-        <nav class="cabecalho__container-menu">
-            <div class="cabecalho__container-menu__content">
-                <ul class="list-menu">
-                <li><a routerLink="/login">Fazer login <!--&#128274--></a></li>
-                <li><a routerLink="/cadastrar" >Anunciar <!--&#x0024--></a></li>
-                <li><a routerLink="/painelAnunciante" >Meu painel <!--&#x24D8--></a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="area-logout" (click)="executarLogout()">
-            <p>Sair</p>
-            <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão" >  
-        </div>
-        
-        <!--ICON MENU HAMBURGER-->
-        <input class="icons_menu" type="checkbox" id="open-menu">
-        <label for="open-menu" class="check-btn">
-            <i class="fas fa-bars"></i>
-        </label>
-
-        <!--ICON FECHAMENTO MENU HAMBURGER-->
-        <input class="icons_menu" type="checkbox" id="exit-menu">
-        <label for="check" class="check-fechar">
-            <i class="fa-solid fa-xmark"></i>
-        </label>
-    </div>
-    }
-
 </header>
+
+<aside>
+    @if (Anunciante) {
+        <div class="side-bar" *ngIf="menuAberto">
+            <div class="images">
+            <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">
+            <img src="/IMAGES/icon-close.svg" alt="Fechar menu" class="icon-close-menu" (click)="closeMenu()">
+        </div>
+        <!--COONTEUDO DO MENU-->
+        <nav class="cabecalho__container-menu">
+            <div class="cabecalho__container-menu__content">
+                <ul class="list-menu">
+                    <li><p routerLink="/login">Fazer login</p></li>
+                    <li><p routerLink="/cadastrar" >Anunciar</p></li>
+                    <li><p routerLink="/painelAnunciante">Meu Anúncios</p></li>
+                    <li class="area-logout" (click)="executarLogout()">
+                        <p>Encerrar sessão</p>
+                        <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão"> 
+                    </li>
+                </ul>
+            </div>
+        </nav>    
+    </div>
+        } @if (!Anunciante) {
+            <div class="side-bar" *ngIf="menuAberto">
+                <div class="images">
+                <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">
+                <img src="/IMAGES/icon-close.svg" alt="Fechar menu" class="icon-close-menu" (click)="closeMenu()">
+        </div>
+        <!--COONTEUDO DO MENU-->
+        <nav class="cabecalho__container-menu">
+            <div class="cabecalho__container-menu__content">
+                <ul class="list-menu">
+                    <li><p routerLink="/login">Fazer login</p></li>
+                    <li class="area-logout" (click)="executarLogout()">
+                        <p>Encerrar sessão</p>
+                        <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão"> 
+                    </li>
+                </ul>
+            </div>
+        </nav>    
+    </div>
+        }
+</aside>

@@ -1,19 +1,10 @@
 
-
-.icons_menu {
-  display: none;
-}
-
-label {
-  display: none;
-}
-
 .cabecalho {
-  gap: 20px;
+  gap: 5px;
   display: flex;
   padding: 11px 20px;
   align-items: center;     
-  justify-content: space-evenly; 
+  justify-content: space-between; 
   background-color: #ffff;                     
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); 
 }
@@ -23,7 +14,6 @@ label {
     height: auto;
     border-radius: 10px;
 }
-
 
 .cabecalho__campo-pesquisa {
     flex-grow: 1; /* Permite que a busca ocupe o espaço do meio */
@@ -37,28 +27,65 @@ label {
     border-radius: 4px;
 }
 
-
-.list-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 25px;                     
+.icon-open-menu {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 15px;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid orange;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03); 
+  transition: 0.5s;
 }
 
-.list-menu a {
-    padding: 3px;
+
+/* Menu lateral */
+.side-bar {
+  bottom: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;         
+  width: 30%;
+  height: 100% !important; 
+  background-color: #ffffff;
+  padding: 20px;
+  z-index: 99999;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.images {
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-close-menu {
+  cursor: pointer;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.list-menu {
+   margin-top: 30px;
+}
+
+.list-menu li {
+    padding: 10px;
     text-decoration: none;
     color:var(--terciaria-preto);
     font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 5px;                      
+    align-items: center;                   
     white-space: nowrap;    
     transition: 0.5s;
 }
 
-.list-menu a:hover {
+.list-menu p:hover {
   font-weight: bold;
   color: #d96b18;
 }
@@ -72,21 +99,10 @@ label {
   font-size: 15px;
   gap: 5px;
   padding: 5px;
-  border-radius: 6px;
-  border: solid 1px orange;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03); 
   transition: 0.5s;
 }
 
-.area-logout img {
-  height: 20px;
-}
-
-.area-logout:hover {
-  border: solid 1px black;
-}
-
-
+/* MAIN */
 .container__marketing {
   margin-right: 1%;
   width: 20%;
@@ -101,11 +117,4 @@ label {
   display: flex;
   width: max-content;
   color: var(--secundaria-laranja);
-}
-
-@media (max-width: 720px) {
-
-  .list-menu {
-    display: none;
-  }
 }
