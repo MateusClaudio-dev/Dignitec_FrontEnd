@@ -122,34 +122,102 @@ app.post('/anuncios/:id/clique', (req, res) => {
 })
 
 // Listar anúncios 
+// app.get('/anuncios', (req, res) => {
+// const sql = `
+//     SELECT 
+//       tabela_anuncios.*, 
+//       COUNT(tabela_cliques.id) AS quantidadeClicks 
+//     FROM form_anuncio AS tabela_anuncios 
+//     LEFT JOIN cliques_anuncios AS tabela_cliques 
+//       ON tabela_anuncios.id = tabela_cliques.anuncio_id 
+//     GROUP BY tabela_anuncios.id
+//   `;
+
+//   // Busque todos os dados dos anúncios da tabela form_anuncio.
+//   // Vá na tabela cliques_anuncios e traga os cliques correspondentes, 
+//   // cruzando o ID do anúncio com o ID do anúncio gravado no clique. 
+//   // Junte e organize tudo separado por anúncio e, no final, conte quantos cliques cada um teve, 
+//   // jogando o resultado na propriedade quantidadeClicks.
+
+//   db.query(sql, (err, results) => {
+//     if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
+//     else {
+//       const anuncio_Com_Imagem_Tratada = results.map(anuncio => {
+//         return {
+//          ...anuncio, 
+//          imagemURL: anuncio.imagemCapa ? `http://localhost:${port}/uploads/${anuncio.imagemCapa}` : 'assets/sem-imagem.png'
+//         };
+//       })
+//       res.json(anuncio_Com_Imagem_Tratada);
+//     }
+//   });
+// });
+
+// Listar anúncios (Geral ou por Aproximação via GPS)
 app.get('/anuncios', (req, res) => {
-const sql = `
-    SELECT 
-      tabela_anuncios.*, 
-      COUNT(tabela_cliques.id) AS quantidadeClicks 
-    FROM form_anuncio AS tabela_anuncios 
-    LEFT JOIN cliques_anuncios AS tabela_cliques 
-      ON tabela_anuncios.id = tabela_cliques.anuncio_id 
-    GROUP BY tabela_anuncios.id
-  `;
+  // 1. Pegamos a latitude e longitude do visitante (se existirem na URL)
+  const { lat, lng } = req.query;
 
-  // Busque todos os dados dos anúncios da tabela form_anuncio.
-  // Vá na tabela cliques_anuncios e traga os cliques correspondentes, 
-  // cruzando o ID do anúncio com o ID do anúncio gravado no clique. 
-  // Junte e organize tudo separado por anúncio e, no final, conte quantos cliques cada um teve, 
-  // jogando o resultado na propriedade quantidadeClicks.
+  let sql = '';
+  let parametrosBusca = [];
 
-  db.query(sql, (err, results) => {
-    if (err) res.status(500).json({ message: 'Erro ao buscar anúncios.' });
-    else {
-      const anuncio_Com_Imagem_Tratada = results.map(anuncio => {
-        return {
-         ...anuncio, 
-         imagemURL: anuncio.imagemCapa ? `http://localhost:${port}/uploads/${anuncio.imagemCapa}` : 'assets/sem-imagem.png'
-        };
-      })
-      res.json(anuncio_Com_Imagem_Tratada);
+  // 2. Verificamos se o usuário passou as coordenadas para decidir qual Query usar
+  if (lat && lng) {
+    // SE TIVER GPS: Adicionamos o cálculo de Haversine mantendo o seu JOIN de cliques
+    sql = `
+      SELECT 
+        tabela_anuncios.*, 
+        COUNT(tabela_cliques.id) AS quantidadeClicks,
+        ( 6371 * acos( cos( radians(?) ) 
+          * cos( radians( tabela_anuncios.latitude ) ) 
+          * cos( radians( tabela_anuncios.longitude ) - radians(?) ) 
+          + sin( radians(?) ) 
+          * sin( radians( tabela_anuncios.latitude ) ) ) ) AS distancia
+      FROM form_anuncio AS tabela_anuncios 
+      LEFT JOIN cliques_anuncios AS tabela_cliques 
+        ON tabela_anuncios.id = tabela_cliques.anuncio_id 
+      WHERE tabela_anuncios.latitude IS NOT NULL AND tabela_anuncios.longitude IS NOT NULL
+      GROUP BY tabela_anuncios.id
+      HAVING distancia <= 25 -- Filtra anúncios num raio de até 25km (pode alterar)
+      ORDER BY distancia ASC; -- Ordena do mais perto para o mais longe
+    `;
+    // Guardamos as coordenadas na ordem exata das interrogações (?, ?, ?)
+    parametrosBusca = [lat, lng, lat];
+  } else {
+    // SE NÃO TIVER GPS: Executa exatamente a sua query original
+    sql = `
+      SELECT 
+        tabela_anuncios.*, 
+        COUNT(tabela_cliques.id) AS quantidadeClicks 
+      FROM form_anuncio AS tabela_anuncios 
+      LEFT JOIN cliques_anuncios AS tabela_cliques 
+        ON tabela_anuncios.id = tabela_cliques.anuncio_id 
+      GROUP BY tabela_anuncios.id
+    `;
+  }
+
+  // 3. Executamos a query passando os parâmetros (se o array estiver vazio, o mysql2 ignora)
+  db.query(sql, parametrosBusca, (err, results) => {
+    if (err) {
+      console.error("Erro no banco:", err);
+      return res.status(500).json({ message: 'Erro ao buscar anúncios.' });
     }
+    
+    // 4. Mantemos o seu mapeamento original para tratar a imagem de capa!
+    const anuncio_Com_Imagem_Tratada = results.map(anuncio => {
+      // Se o anúncio veio com o cálculo, arredondamos para 1 casa decimal (ex: 2.4 km)
+      const distanciaFormatada = anuncio.distancia !== undefined && anuncio.distancia !== null
+        ? parseFloat(anuncio.distancia.toFixed(1))
+        : null;
+
+      return {
+        ...anuncio, 
+        distancia: distanciaFormatada, // Adiciona a distância bonitinha no objeto
+        imagemURL: anuncio.imagemCapa ? `http://localhost:${port}/uploads/${anuncio.imagemCapa}` : 'assets/sem-imagem.png'
+      };
+    });
+
+    res.json(anuncio_Com_Imagem_Tratada);
   });
 });
 
