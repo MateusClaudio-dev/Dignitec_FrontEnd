@@ -1,8 +1,12 @@
-<div class="painel-container">
-  <header class="painel-header">
+<header>
+  <app-cabecalho></app-cabecalho>
+</header>
+<main>
+  <div class="painel-container">
+  <div class="painel-header">
     <h2>Painel de Anúncios</h2>
     <p>Gerencie suas publicações e acompanhe o desempenho em tempo real.</p>
-  </header>
+  </div>
 
   @if (meusAnuncios.length === 0) {
     <div class="sem-anuncios">
@@ -44,3 +48,4 @@
     </div>
   }
 </div>
+</main>

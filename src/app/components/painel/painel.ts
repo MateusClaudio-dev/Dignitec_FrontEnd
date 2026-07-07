@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { AnuncioService } from './../../service/anuncios.service';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Cabecalho } from '../cabecalho/cabecalho';
 
 @Component({
   selector: 'app-painel',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Cabecalho],
   templateUrl: './painel.html',
   styleUrl: './painel.css',
 })

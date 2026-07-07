@@ -6,7 +6,6 @@
   max-width: 1200px; /* Limite para não espalhar demais em monitores gigantes */
   margin: 20px auto;
   padding: 16px;
-  background-color: #f8fafc;
   font-family: 'Segoe UI', -apple-system, Roboto, sans-serif;
   box-sizing: border-box;
 }
