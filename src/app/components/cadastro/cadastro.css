@@ -1,7 +1,5 @@
-/* ==========================================
-   LAYOUT GERAL DA PÁGINA
-   ========================================== */
 main {
+  margin: 0;
   max-width: 650px;
   margin: 60px auto;
   padding: 40px;
@@ -12,31 +10,24 @@ main {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-main h2 {
-  font-size: 1.8rem;
+main h2, 
+strong {
+  font-size: 1.5rem;
   font-weight: 700;
   color: #000000; /* Cor Secundária */
-  text-align: center;
   margin-bottom: 8px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5px;  margin-bottom: 30px;
 }
 
-.subtitle {
-  text-align: center;
-  color: #64748b;
-  font-size: 1rem;
-  margin-bottom: 36px;
+main h2 strong {
+  color: orange;
 }
 
-/* ==========================================
-   ESTILIZAÇÃO DO FORMULÁRIO
-   ========================================== */
 form {
   display: flex;
   flex-direction: column;
 }
 
-/* Rótulos (Labels) */
 label {
   font-size: 0.9rem;
   font-weight: 600;
@@ -46,7 +37,6 @@ label {
   letter-spacing: 0.5px;
 }
 
-/* Campos de Entrada (Inputs e Textarea) */
 input[type="text"],
 textarea {
   width: 100%;
@@ -67,13 +57,11 @@ textarea {
   resize: vertical;
 }
 
-/* Placeholder sutil */
 input::placeholder,
 textarea::placeholder {
   color: #94a3b8;
 }
 
-/* Efeito de Foco (Focus) -> Aplica a cor Laranja */
 input[type="text"]:focus,
 textarea:focus {
   outline: none;
@@ -81,9 +69,6 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
 }
 
-/* ==========================================
-   CAMPO DE UPLOAD DE ARQUIVO (INPUT FILE)
-   ========================================== */
 input[type="file"] {
   margin-bottom: 32px;
   padding: 12px;
@@ -132,7 +117,7 @@ button[type="submit"]:active {
    ========================================== */
 @media (max-width: 640px) {
   main {
-    margin: 20px;
+    margin: 0;
     padding: 24px;
   }
   

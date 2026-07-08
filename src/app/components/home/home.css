@@ -7,33 +7,84 @@ main {
   flex-direction: column;
   padding: 16px;
   font-family: 'Segoe UI', -apple-system, Roboto, sans-serif;
-  background-color: #f5f3f3;
 }
 
-/* Banner Principal */
+/* Carrosel */
 .hero-main {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-}
-.img-hero-main {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
   width: 100%;
-  max-height: 450px;
-  object-fit: cover;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 450px; /* Ajuste para a altura que você deseja para sua Hero */
+  overflow: hidden; /* Garante que nada escape do container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.img-hero-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 3. Truque de ouro para centralizar imagem absolute */
+  max-width: 1200px; /* 4. Evita que a imagem fique gigante em telas muito largas */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Faz a imagem preencher o espaço sem distorcer */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Efeito suave de esmaecer (fade) */
+  z-index: 1;
+}
+
+/* Classe dinâmica que o Angular vai colocar apenas na imagem atual */
+.img-hero-main.ativa {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Estilização dos Botões */
+.btn-carrossel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto transparente */
+  color: rgb(255, 255, 255);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10; /* Garante que os botões fiquem acima das imagens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.btn-carrossel:hover {
+  background-color: rgba(230, 135, 11, 0.7); /* Escurece o botão no hover */
+}
+
+.btn-anterior {
+  left: 20px;
+  z-index: 10;
+}
+
+.btn-proximo {
+  right: 20px;
+}
+
+.icone {
+  font-size: 2rem;
+  line-height: 0;
+  margin-bottom: 4px; /* Ajuste fino para centralizar o caractere da seta */
+}
 
 
 /* Seção de Títulos (Sugestões / Localização) */
 .localizacao {
+  margin-top: 25px;
   text-align: start;
   margin-bottom: 32px;
+  padding: 0 15px;
 }
 
 .localizacao .sugestoes {
@@ -51,20 +102,24 @@ main {
   letter-spacing: 1px;
 }
 
-/* ==========================================
-   A MÁGICA DA VITRINE LADO A LADO (FLEXBOX)
-   ========================================== */
 #lista-anuncios {
   display: flex;
-  flex-direction: row; /* Alinha na horizontal no computador */
-  flex-wrap: wrap;    /* Quebra a linha automaticamente se faltar espaço */
-  gap: 24px;          /* Espaçamento idêntico ao painel */
+  flex-direction: row; 
+  flex-wrap: nowrap;   
+  gap: 24px;         
   justify-content: start; /* Centraliza as fileiras de cards */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth; /* Deixa o deslize macio */
+  -webkit-overflow-scrolling: touch; /* Deslize elástico e suave no celular */
+  scrollbar-width: none;  /* Esconde no Firefox */
+  -ms-overflow-style: none; /* Esconde no Internet Explorer/Edge antigo */
 }
 
-/* ==========================================
-   O CARD DE ANÚNCIO (ESTILO PROTÓTIPO)
-   ========================================== */
+#lista-anuncios::-webkit-scrollbar {
+  display: none;          /* Sumir completamente com a barra cinza */
+}
+
 .card-anuncio {
   background: #ffffff;
   border-radius: 14px;
@@ -74,9 +129,8 @@ main {
   box-sizing: border-box;
 
   /* Tamanho flexível: mínimo 320px no PC, máximo 380px */
-  flex: 1 1 320px;
-  max-width: 380px;
-
+  flex: 0 0 400px;
+  max-width: 400px;
   display: flex;
   flex-direction: column; /* Elementos internos empilhados verticalmente */
 }
@@ -91,7 +145,7 @@ main {
 
 .capa-container img {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   display: block;
 }
@@ -129,9 +183,7 @@ main {
   margin: 0 0 16px 0;
 }
 
-/* ==========================================
-   RODAPÉ DO CARD (BOTÃO LARANJA DE CONTATO)
-   ========================================== */
+  /* RODAPÉ DO CARD (BOTÃO LARANJA DE CONTATO) */
 .rodape-card {
   display: flex;
   flex-direction: column;
@@ -148,7 +200,7 @@ main {
   color: #64748b;
 }
 
-/* Contato/Telefone (Estilo exato do botão laranja do seu protótipo) */
+/* Contato/Telefone ) */
 .rodape-card span:last-child {
   display: flex;
   align-items: center;
@@ -163,17 +215,23 @@ main {
   letter-spacing: 0.5px;
 }
 
-/* ==========================================
-   COMPORTAMENTO EXCLUSIVO MOBILE
-   ========================================== */
 @media (max-width: 480px) {
   main {
-    padding: 12px;
+    padding: 0px;
   }
 
   .hero-main {
+    top: 10px;
     height: 180px;
     border-radius: 10px;
+  }
+
+  .btn-anterior {
+  left: 5px;
+  }
+
+  .btn-proximo {
+    right: 6px;
   }
 
   .localizacao .sugestoes {

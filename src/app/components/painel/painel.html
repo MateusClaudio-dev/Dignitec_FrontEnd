@@ -3,11 +3,15 @@
 </header>
 <main>
   <div class="painel-container">
-  <div class="painel-header">
-    <h2>Painel de Anúncios</h2>
-    <p>Gerencie suas publicações e acompanhe o desempenho em tempo real.</p>
-  </div>
-
+      <div class="container-header">
+        <div class="img-header">
+          <img  routerLink="/home" src="/IMAGES/back-orange.svg" alt="" width="30px">
+        </div>
+        <div class="painel-header">
+          <h2>Painel de Anúncios</h2>
+          <p>Gerencie suas publicações e acompanhe o desempenho em tempo real.</p>
+        </div>
+      </div>
   @if (meusAnuncios.length === 0) {
     <div class="sem-anuncios">
       <p>Você ainda não possui nenhum anúncio cadastrado.</p>

@@ -10,7 +10,7 @@
 <body>
 <header>
         <div class="cabecalho">
-        <div class="cabecalho__logo">
+        <div class="cabecalho__logo" routerLink="/home">
             <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">  
         </div>
 
@@ -18,7 +18,8 @@
             <input type="text" placeholder="Buscar">
         </div>
         <div class="icon-open-menu" (click)="openMenu()">
-            <img src="/IMAGES/icon-menu.svg" alt="Finalizar sessão" >  
+            <img src="/IMAGES/openMenu.svg" alt="Finalizar sessão" >  
+            <!-- <img src="/IMAGES/icon-menu.svg" alt="Finalizar sessão" >   -->
         </div>
     </div>
 </header>
@@ -26,20 +27,27 @@
 <aside>
     @if (Anunciante) {
         <div class="side-bar" *ngIf="menuAberto">
-            <div class="images">
+            <div class="images" routerLink="/home">
             <img class="cabecalho__logo__img" src="/IMAGES/logo-dgn.jpg" alt="Logo do Dignitec">
-            <img src="/IMAGES/icon-close.svg" alt="Fechar menu" class="icon-close-menu" (click)="closeMenu()">
+            <!-- <img src="/IMAGES/icon-close.svg" alt="Fechar menu" class="icon-close-menu" (click)="closeMenu()"> -->
+            <img src="\IMAGES\iconClose.svg" alt="Fechar menu" class="icon-close-menu" (click)="closeMenu()">
         </div>
         <!--COONTEUDO DO MENU-->
         <nav class="cabecalho__container-menu">
             <div class="cabecalho__container-menu__content">
                 <ul class="list-menu">
-                    <li><p routerLink="/login">Fazer login</p></li>
-                    <li><p routerLink="/cadastrar" >Anunciar</p></li>
-                    <li><p routerLink="/painelAnunciante">Meu Anúncios</p></li>
+                    <li class="area-logout" >
+                        <img src="/IMAGES/account.svg" alt="">
+                        <p routerLink="/login">Fazer login</p></li>
+                    <li class="area-logout">
+                        <img src="/IMAGES/data_exploration.svg" alt="">
+                        <p routerLink="/cadastrar">Anunciar</p></li>
+                    <li class="area-logout">
+                        <img src="/IMAGES/analytics.svg" alt="">
+                        <p routerLink="/painelAnunciante">Meu Anúncios</p></li>
                     <li class="area-logout" (click)="executarLogout()">
+                        <img src="/IMAGES/logout.svg" alt="Finalizar sessão"> 
                         <p>Encerrar sessão</p>
-                        <img src="/IMAGES/icon-logout.svg" alt="Finalizar sessão"> 
                     </li>
                 </ul>
             </div>

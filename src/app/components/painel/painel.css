@@ -1,13 +1,22 @@
 /* ==========================================
    CONTAINER PRINCIPAL (FLEXBOX RESPONSIVO)
    ========================================== */
+
+
+
 .painel-container {
+  gap: 20px;
   width: 100%;
   max-width: 1200px; /* Limite para não espalhar demais em monitores gigantes */
   margin: 20px auto;
   padding: 16px;
   font-family: 'Segoe UI', -apple-system, Roboto, sans-serif;
   box-sizing: border-box;
+}
+
+.container-header {
+  display: flex;
+  gap: 10px;
 }
 
 .painel-header {
@@ -27,9 +36,6 @@
   color: #64748b;
 }
 
-/* ==========================================
-   A MÁGICA DO LADO A LADO COM FLEXBOX
-   ========================================== */
 .lista-anuncios {
   display: flex;
   flex-direction: row; /* Alinha os cards na horizontal */
@@ -38,9 +44,6 @@
   justify-content: start; /* Centraliza a fileira de cards na tela */
 }
 
-/* ==========================================
-   ESTRUTURA DO CARD (TOTALMENTE EM FLEXBOX)
-   ========================================== */
 .anuncio-card {
   background: #ffffff;
   border-radius: 14px;

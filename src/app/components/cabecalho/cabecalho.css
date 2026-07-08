@@ -5,8 +5,10 @@
   padding: 11px 20px;
   align-items: center;     
   justify-content: space-between; 
-  background-color: #ffff;                     
+  background-color: #ffffff;                     
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.09); 
+  position: relative;
+  z-index: 10; 
 }
 
 .cabecalho__logo__img {
@@ -36,8 +38,6 @@
   font-size: 15px;
   gap: 5px;
   padding: 5px;
-  border: 1px solid orange;
-  border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03); 
   transition: 0.5s;
 }
@@ -72,13 +72,14 @@
 }
 
 .list-menu {
+  padding: 0 1px;
    margin-top: 30px;
 }
 
 .list-menu li {
-    padding: 10px;
+    padding: 8px 8px;
     text-decoration: none;
-    color:var(--terciaria-preto);
+    color: black;
     font-family: sans-serif;
     align-items: center;                   
     white-space: nowrap;    
@@ -87,7 +88,7 @@
 
 .list-menu p:hover {
   font-weight: bold;
-  color: #d96b18;
+  color: #f7720c;
 }
 
 .area-logout {
@@ -117,4 +118,14 @@
   display: flex;
   width: max-content;
   color: var(--secundaria-laranja);
+}
+
+@media (max-width: 480px) {
+  .cabecalho {
+    gap: 20px;
+  }
+
+  .side-bar {
+    width: 50%;
+  }
 }

@@ -1,13 +1,13 @@
 <app-cabecalho></app-cabecalho>
 <main>
     <div class="hero-main">
-        <button class="btn-carrosel btn-anterior" (click)="imagemAnterior()">
+        <button class="btn-carrossel btn-anterior" (click)="imagemAnterior()">
             <span class="icone">&lsaquo;</span>
         </button>
         @for (imagem of imagensHero; track $index ) {
             <img 
             class="img-hero-main" 
-            [src]="imagensHero"
+            [src]="imagem"
             [class.ativa] = "$index === indiceAtivo"
             alt="Painel de Informações Dignitec">
         }

@@ -1,10 +1,9 @@
 <header>
   <app-cabecalho></app-cabecalho>
 </header>
-
 <main>
-  <h2>CADASTRE SUA AÇÃO NO DIGNITEC</h2>
-  <p class="subtitle">Divulgue sua ação para toda comunidade e conquiste mais apoio</p>
+  <img src="/IMAGES/" alt="">
+  <h2>DIGNITEC - <strong>A vtrine da favela</strong></h2>
 
   <form (ngSubmit)="enviarDados()">
     
@@ -17,7 +16,8 @@
     <label for="descricao">Descrição detalhada</label>
     <textarea id="descricao" name="descricao" [(ngModel)]="dadosFormulario.descricao" placeholder="Descreva o projeto" required></textarea>
 
-    <label for="localizacao">Localização</label><small (click)="buscarCoordenadas()" style="color: orange; cursor: pointer;"  >Clique aqui para usar sua localização atual</small> <br>
+    <label for="localizacao">Localização</label>
+    <!-- <small (click)="buscarCoordenadas()" style="color: orange; cursor: pointer;">Clique aqui para usar sua localização atual</small> <br> -->
     <input type="text" id="localizacao" name="localizacao" [(ngModel)]="dadosFormulario.localizacao" placeholder="Endereço " required />
     
 
@@ -29,4 +29,5 @@
 
     <button type="submit">Cadastrar ação</button>
   </form>
+
 </main>
