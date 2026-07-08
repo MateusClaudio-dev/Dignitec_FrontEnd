@@ -16,13 +16,18 @@ import { CommonModule } from '@angular/common';
 export class Home implements OnInit{
 
   imagensHero: string[] = [
-    '/IMAGES/dgnPersona2.jpeg',
-    '/IMAGES/logo-dgn.jpg',
-    '/IMAGES/fordPhyllantropy.jpg',
-    '/IMAGES/senaiCimatec.png',
-    '/IMAGES/redeCidada.jpg',
-    '/IMAGES/Sebrae.webp',
-    '/IMAGES/1.svg'
+    '/IMAGES/ModelBussines/1.png',
+    '/IMAGES/ModelBussines/2.png',
+    '/IMAGES/ModelBussines/3.png',
+    '/IMAGES/ModelBussines/4.png',
+    '/IMAGES/ModelBussines/5.png',
+    '/IMAGES/ModelBussines/6.png',
+    '/IMAGES/ModelBussines/7.png',
+    '/IMAGES/ModelBussines/8.png',
+    // '/IMAGES/HeroMain/fordPhyllantropy.jpg',
+    // '/IMAGES/HeroMain/senaiCimatec.png',
+    // '/IMAGES/HeroMain/redeCidada.jpg',
+    // '/IMAGES/HeroMain/Sebrae.webp',
   ]
   indiceAtivo: number = 0
   listaDeAnuncios: any[] = [];

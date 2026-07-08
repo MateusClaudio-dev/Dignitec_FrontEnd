@@ -1,88 +1,153 @@
-main {
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffff;
-    font-family: sans-serif;
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.img-main {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    overflow: hidden; /* Evita barras de rolagem desnecessárias no desktop */
+}
+
+.container-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    padding: 40px;
+}
+
+.logo {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
 }
 
 .container-form {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: orange;
-    height: 450px;
-    width: 40%;
+    background-color: #f7931e; 
+    width: 50%;
+    height: 100%;
+    padding: 20px;
 }
 
 .title-fazerLogin {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
+/* Formulário (Card Branco) */
 form {
     display: flex;
     flex-direction: column;
-    padding: 5%;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 360px; /* Impede o formulário de esticar excessivamente */
+}
+
+/* Input invisível de logo dentro do form no Desktop */
+form .logo-mobile {
+    display: none;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
 }
 
 form input {    
-    gap: 50px;
-    width: 250px;
-    display: block;
-    padding: 5px;
+    width: 100%; 
+    padding: 10px;
     margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1.5px solid black;
-    transition: 0.2s;
+    border-radius: 6px;
+    border: 1.5px solid #777;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
 form input:focus {
-  outline: none;
-  border-color: #ff6b00; 
-
+    border-color: #f7931e; 
 }
 
 .opcoes-de-entrada {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-direction: column;
-    justify-content: center;
-    font-size: 10px;
-} 
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.opcoes-de-entrada a {
+    color: #0050a5;
+    text-decoration: none;
+}
+
+.opcoes-de-entrada a:hover {
+    text-decoration: underline;
+}
 
 form button {
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    padding: 5px;
+    align-self: flex-end;
+    padding: 8px 24px;
     border-radius: 8px;
     border: none;
-    width: 80px;
-    margin-top: 10px;
-    background-color: #cdcdce;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    background-color: #d6d3cc;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     transition: 0.3s;
+    cursor: pointer;
 }
 
 form button:hover {
-    background-color: #f58739;
+    background-color: #e28413;
+    color: white;
 }
 
+/* --- RESPONSIVIDADE (Tablets e Celulares) --- */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+        overflow-y: auto; /* Permite rolar se a tela for muito pequena */
+    }
 
+    .container-logo {
+        display: none;
+    }
 
+    /* Formulário ocupa a tela inteira com o fundo laranja */
+    .container-form {
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+    }
 
+    form {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
 
-
-
+    /* Ativa a logo interna do formulário no ambiente mobile */
+    form .logo-mobile {
+        display: block;
+        max-width: 140px;
+        margin: 0 auto 20px auto;
+    }
+}

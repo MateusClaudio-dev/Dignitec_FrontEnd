@@ -21,6 +21,7 @@ export class Painel implements OnInit {
 
   ngOnInit(): void {
     this.carregarAnuncio();
+    this.cdr.detectChanges();
   }
 
   carregarAnuncio() {

@@ -11,7 +11,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrl: './criar-conta.css',
 })
 export class CriarConta implements OnInit {
-
+  termosAceitos: boolean = false 
   usuarios: any[] | null = null 
 
     constructor(
@@ -40,6 +40,11 @@ export class CriarConta implements OnInit {
           alert('Preencha todos os campos')
           return;
         }
+
+    if (!this.termosAceitos) {
+      alert('Dependemos dos termos de privacidade')
+      return;
+    }
 
         if (this.dadosCadastro.senha !== this.dadosCadastro.confirmarSenha) {
           alert('As senhas não coincidem')

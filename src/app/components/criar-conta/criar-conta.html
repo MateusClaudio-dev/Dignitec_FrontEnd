@@ -1,11 +1,12 @@
 <main>
-    <div class="logo-dign">
+    <div class="container-logo">
         <img class="img-main" src="/IMAGES/logo-dgn.jpg" alt="Logo Dignitec">
     </div>
 
     <div class="container-form">
+        
         <form (ngSubmit)="enviarDados()">
-            
+            <img class="img-main" src="/IMAGES/logo-dgn.jpg" alt="Logo Dignitec">
             <label for="nome">Nome de usuário</label>
             <input type="text" name="nome" [(ngModel)]="dadosCadastro.nome" placeholder="Como devemos te chamar?" required>
 
@@ -24,6 +25,11 @@
                 <option value="usuario">Usuário Comum</option>
                 <option value="anunciante">Anunciante</option>
             </select>
+
+            <div class="termo-privacidade">
+                <input id="checkbox" type="checkbox" name="termos" [(ngModel)]="termosAceitos">
+                <label class="txt-termo">Termo de privacidade</label>
+            </div>
 
             <button type="submit">Salvar</button> 
         </form>
