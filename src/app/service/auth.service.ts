@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-    private API_URL_BASE = 'http://localhost:3001';
+    private API_URL_BASE = 'https://dignitecbackend-production-5ee4.up.railway.app';
+    // private API_URL_BASE = 'http://localhost:3001';
 
   constructor(private http: HttpClient) {}
 
