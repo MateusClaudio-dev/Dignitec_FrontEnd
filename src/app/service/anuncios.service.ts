@@ -1,4 +1,5 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment.development';
+import { HttpClient,  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AnuncioService {
 
   // private API_URL = 'http://localhost:3001/anuncios';
-   private API_URL = 'https://dignitecbackend-production-5ee4.up.railway.app/anuncios';
+   private API_URL = `${environment.API_URL}/anuncios`;
 
   constructor(private http: HttpClient) {
     // console.log(this.API_URL)

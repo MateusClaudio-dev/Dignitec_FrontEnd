@@ -1,4 +1,4 @@
-
+import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-    private API_URL_BASE = 'https://dignitecbackend-production-5ee4.up.railway.app';
+    private API_URL_BASE = `${environment.API_URL}`;
+    // private API_URL_BASE = 'https://dignitecbackend-production-5ee4.up.railway.app';
     // private API_URL_BASE = 'http://localhost:3001';
 
   constructor(private http: HttpClient) {}
