@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AnuncioService {
 
-  // private API_URL = 'http://localhost:3001/anuncios';
-   private API_URL = `${environment.API_URL}/anuncios`;
+  private API_URL = 'https://dignitecbackend-production-5ee4.up.railway.app/anuncios';
+  //  private API_URL = `${environment.API_URL}/anuncios`;
 
   constructor(private http: HttpClient) {
     // console.log(this.API_URL)
