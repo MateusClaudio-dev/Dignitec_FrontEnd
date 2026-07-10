@@ -37,7 +37,7 @@ export class Painel implements OnInit {
 
   excluirAnuncio(id: number): void {
     console.log("ID recebido no clique:", id); // <-- ADICIONE ISSO
-    console.log("Lista antes do filtro:", this.meusAnuncios);this.cdr.detectChanges();
+    console.log("Lista antes do filtro:", this.meusAnuncios);
     if (confirm('Tem certeza que deseja excluir anuncio?')) {
       this.anuncioService.deletarAnuncios(id).subscribe({
         next: (resposta: any) => {
@@ -46,7 +46,7 @@ export class Painel implements OnInit {
           this.meusAnuncios = this.meusAnuncios.filter(anuncio => {
             return anuncio.id !== id;
           })
-          
+          this.cdr.detectChanges();
         },
         error: (erro) => {
           console.error('Erro ao tentar excluir anúncio', erro)
