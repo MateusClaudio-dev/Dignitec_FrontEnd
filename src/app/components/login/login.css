@@ -59,7 +59,7 @@ form {
 }
 
 /* Input invisível de logo dentro do form no Desktop */
-form .logo-mobile {
+form img {
     display: none;
 }
 
@@ -91,6 +91,7 @@ form input:focus {
     flex-direction: column;
     font-size: 13px;
     margin-bottom: 10px;
+    margin-left: 2%;
 }
 
 .opcoes-de-entrada a {
@@ -108,9 +109,9 @@ form button {
     border-radius: 8px;
     border: none;
     width: 100px;
-    background-color: #d6d3cc;
+    background-color: #f7931e;
     font-weight: bold;
-    color: #333;
+    color: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     transition: 0.3s;
     cursor: pointer;
@@ -132,7 +133,6 @@ form button:hover {
         display: none;
     }
 
-    /* Formulário ocupa a tela inteira com o fundo laranja */
     .container-form {
         width: 100%;
         height: 100vh;
@@ -144,8 +144,7 @@ form button:hover {
         padding: 30px 20px;
     }
 
-    /* Ativa a logo interna do formulário no ambiente mobile */
-    form .logo-mobile {
+    form img {
         display: block;
         max-width: 140px;
         margin: 0 auto 20px auto;

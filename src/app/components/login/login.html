@@ -4,6 +4,7 @@
     </div>
     <div class="container-form">
         <form (ngSubmit)="fazerLogin()">
+            <img class="img" src="/IMAGES/logo-dgn.jpg" alt="Logo Dignitec">
             <h1 class="title-fazerLogin">Fazer login</h1>
             <label for="" >Nome de usúario</label>
             <input type="name" name="nameUsuario" placeholder=""  [(ngModel)]="dadosLogin.nameUsuario" required>
@@ -11,10 +12,13 @@
             <label for="senha">Senha</label>
             <input type="password" name="senha" placeholder="" [(ngModel)]="dadosLogin.senha" required>
             
+
             <div class="opcoes-de-entrada">
-                <a routerLink="/criarConta"><small>Criar conta</small></a>
+                <a routerLink="/criarConta"><small>Não tem conta? Criar conta</small></a>
                 <a routerLink="#" (click)="navegarComoVisitante()"><small>Navegar como visitante</small></a>
-            </div>
+                <!-- <a><input type="checkbox">Logar automaticamente</a> -->
+
+            </div>                
             <button type="submit">Entrar</button>
          </form>
     </div>
