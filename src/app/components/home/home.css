@@ -1,6 +1,9 @@
-/* ==========================================
-   ESTILIZAÇÃO GERAL DA HOME
-   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 main {
   display: flex;
   width: 100%;
@@ -45,11 +48,11 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto transparente */
+  background-color: rgba(0, 0, 0, 0.4); 
   color: rgb(255, 255, 255);
   border: none;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10; /* Garante que os botões fiquem acima das imagens */
@@ -60,7 +63,7 @@ main {
 }
 
 .btn-carrossel:hover {
-  background-color: rgba(230, 135, 11, 0.7); /* Escurece o botão no hover */
+  background-color: rgba(230, 135, 11, 0.7);
 }
 
 .btn-anterior {
@@ -75,7 +78,7 @@ main {
 .icone {
   font-size: 2rem;
   line-height: 0;
-  margin-bottom: 4px; /* Ajuste fino para centralizar o caractere da seta */
+  margin-bottom: 4px; 
 }
 
 
@@ -97,7 +100,7 @@ main {
 .localizacao .cidade {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #d96b18; /* Laranja marcante do Dignitec */
+  color: #d96b18; 
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -117,14 +120,14 @@ main {
 }
 
 #lista-anuncios::-webkit-scrollbar {
-  display: none;          /* Sumir completamente com a barra cinza */
+  display: none;          
 }
 
 .card-anuncio {
   background: #ffffff;
   border-radius: 14px;
   padding: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Sombra marcante do protótipo */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   border: 1px solid #e2e8f0;
   box-sizing: border-box;
 
@@ -132,10 +135,10 @@ main {
   flex: 0 0 400px;
   max-width: 400px;
   display: flex;
-  flex-direction: column; /* Elementos internos empilhados verticalmente */
+  flex-direction: column; 
 }
 
-/* Container da Imagem de Capa */
+
 .capa-container {
   width: 100%;
   border-radius: 10px;
@@ -160,7 +163,7 @@ main {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #d96b18; /* Categoria destacada com a cor do seu logo */
+  color: #d96b18;
   background: rgba(217, 107, 24, 0.1);
   padding: 4px 8px;
   border-radius: 4px;
@@ -183,7 +186,6 @@ main {
   margin: 0 0 16px 0;
 }
 
-  /* RODAPÉ DO CARD (BOTÃO LARANJA DE CONTATO) */
 .rodape-card {
   display: flex;
   flex-direction: column;
@@ -239,17 +241,17 @@ main {
   }
 
   #lista-anuncios {
-    flex-direction: column; /* Transforma a vitrine em feed vertical */
+    flex-direction: column; 
     align-items: center;
   }
 
   .card-anuncio {
     width: 100%;
-    max-width: 100%; /* Pega a tela cheia do smartphone igual ao mockup */
+    max-width: 100%; 
   }
 
   .capa-container img {
-    height: 220px; /* Imagem ligeiramente maior no celular */
+    height: 220px; 
   }
 }
 

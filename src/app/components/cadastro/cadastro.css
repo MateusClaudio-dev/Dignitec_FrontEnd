@@ -3,7 +3,7 @@ main {
   max-width: 650px;
   margin: 60px auto;
   padding: 40px;
-  background-color: #ffffff; /* Cor Primária */
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
@@ -14,7 +14,7 @@ main h2,
 strong {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #000000; /* Cor Secundária */
+  color: #000000;
   margin-bottom: 8px;
   letter-spacing: -0.5px;  margin-bottom: 30px;
 }
@@ -31,7 +31,7 @@ form {
 label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #000000; /* Cor Secundária */
+  color: #000000;
   margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -51,7 +51,6 @@ textarea {
   box-sizing: border-box;
 }
 
-/* Textarea específico */
 textarea {
   min-height: 120px;
   resize: vertical;
@@ -65,7 +64,7 @@ textarea::placeholder {
 input[type="text"]:focus,
 textarea:focus {
   outline: none;
-  border-color: #ff6b00; /* Cor Terciária */
+  border-color: #ff6b00;
   box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
 }
 
@@ -87,11 +86,8 @@ input[type="file"]:hover {
   background-color: #fff8f4;
 }
 
-/* ==========================================
-   BOTÃO DE SUBMIT (CTA)
-   ========================================== */
 button[type="submit"] {
-  background-color: #ff6b00; /* Cor Terciária: Laranja */
+  background-color: #ff6b00;
   color: #ffffff;
   border: none;
   padding: 14px 20px;
@@ -104,7 +100,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #e05e00; /* Laranja mais escuro */
+  background-color: #e05e00;
   box-shadow: 0 6px 16px rgba(255, 107, 0, 0.3);
 }
 
@@ -112,9 +108,6 @@ button[type="submit"]:active {
   transform: scale(0.98);
 }
 
-/* ==========================================
-   RESPONSIVIDADE
-   ========================================== */
 @media (max-width: 640px) {
   main {
     margin: 0;

@@ -91,9 +91,7 @@ form input:focus, select:focus {
     color: #0050a5;
 }
 
-
 .termo-privacidade .txt-termo:hover {
-
     text-decoration: underline;
 }
 
@@ -102,8 +100,8 @@ form button {
     padding: 8px 24px;
     border-radius: 8px; /* Estilo mais arredondado e limpo */
     border: none;
-    background-color: #cdcdce;
-    color: #333;
+    background-color: #f7931e;
+    color: white;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);

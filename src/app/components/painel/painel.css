@@ -1,13 +1,7 @@
-/* ==========================================
-   CONTAINER PRINCIPAL (FLEXBOX RESPONSIVO)
-   ========================================== */
-
-
-
 .painel-container {
   gap: 20px;
   width: 100%;
-  max-width: 1200px; /* Limite para não espalhar demais em monitores gigantes */
+  max-width: 1200px; 
   margin: 20px auto;
   padding: 16px;
   font-family: 'Segoe UI', -apple-system, Roboto, sans-serif;
@@ -38,9 +32,9 @@
 
 .lista-anuncios {
   display: flex;
-  flex-direction: row; /* Alinha os cards na horizontal */
-  flex-wrap: wrap;    /* CRUCIAL: joga o card para baixo se não couber na largura */
-  gap: 24px;          /* Espaçamento perfeito entre os cards */
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
   justify-content: start; /* Centraliza a fileira de cards na tela */
 }
 
@@ -48,17 +42,17 @@
   background: #ffffff;
   border-radius: 14px;
   padding: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Sombra igual ao protótipo */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   border: 1px solid #e2e8f0;
   box-sizing: border-box;
 
   /* Define o tamanho base do card no computador. 
-     Ele tenta ter 320px, mas pode esticar se necessário (flex-grow: 1) */
+     Ele tenta ter 320px, mas pode esticar se necessário  */
   flex: 1 1 320px; 
-  max-width: 380px; /* Limita a largura máxima no monitor */
+  max-width: 380px;
 
   display: flex;
-  flex-direction: column; /* Organiza os elementos internos empilhados */
+  flex-direction: column;
 }
 
 /* Foto do Anúncio */
@@ -98,7 +92,6 @@
   margin: 0 0 12px 0;
 }
 
-/* Cliques / Métricas */
 .metrica-cliques {
   font-size: 0.85rem;
   color: #64748b;
@@ -110,9 +103,6 @@
   margin-bottom: 16px;
 }
 
-/* ==========================================
-   BOTÕES DE AÇÃO EM FLEXBOX LADO A LADO
-   ========================================== */
 .anuncio-acoes {
   display: flex;
   flex-direction: row;
@@ -137,7 +127,7 @@
 }
 
 .btn-editar {
-  background-color: #d96b18; /* Laranja idêntico ao botão do protótipo */
+  background-color: #d96b18;
   box-shadow: 0 4px 8px rgba(217, 107, 24, 0.3);
 }
 
@@ -158,7 +148,6 @@
   font-size: 1.2rem;
 }
 
-/* Estado de lista vazia */
 .sem-anuncios {
   text-align: center;
   background: white;
@@ -184,9 +173,6 @@
   background-color: #f09e5f;
 }
 
-/* ==========================================
-   COMPORTAMENTO EXCLUSIVO MOBILE
-   ========================================== */
 @media (max-width: 480px) {
   .painel-container {
     max-width: 100%;
@@ -194,16 +180,16 @@
   }
 
   .lista-anuncios {
-    flex-direction: column; /* No celular, os cards viram uma coluna vertical */
+    flex-direction: column; 
     align-items: center;
   }
 
   .anuncio-card {
     width: 100%;
-    max-width: 100%; /* O card pega a largura total disponível na tela do celular */
+    max-width: 100%; 
   }
 
   .anuncio-thumb img {
-    height: 220px; /* Mantém a proporção do protótipo no celular */
+    height: 220px;
   }
 }
