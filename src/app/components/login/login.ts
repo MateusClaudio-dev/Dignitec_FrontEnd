@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AuthService } from './../../service/auth.service';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 
@@ -19,7 +19,8 @@ export class Login {
 
   constructor(
     private  auth: AuthService,
-    private route: Router
+    private route: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
     
@@ -31,7 +32,12 @@ export class Login {
     this.auth.fazerLogin(this.dadosLogin).subscribe({
       next: (resposta) => {
         const usuarioLogado = localStorage.setItem('usuarioLogado', 'true');
-        this.route.navigate(['/home'])
+        const tipoConta = localStorage.setItem('tipoConta', resposta.tipoConta);
+        
+        
+        this.route.navigate(['/home']).then(() => {
+          window.location.reload();
+        })
       },
       error: (err) => {
         console.error('Senha invalida ou usúario não encontrado', err)
