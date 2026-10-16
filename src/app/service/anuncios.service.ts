@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AnuncioService {
 
-   private API_URL = `${environment.API_URL}/anuncios`;
+   private API_URL = 'https://dignitec-backend.onrender.com/anuncios';
+  //  private API_URL = `${environment.API_URL}/anuncios`;
 
   constructor(private http: HttpClient) {
     // console.log(this.API_URL)

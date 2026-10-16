@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private API_URL_BASE = `${environment.API_URL}`;
+  private API_URL_BASE = 'https://dignitec-backend.onrender.com';
+  // private API_URL_BASE = `${environment.API_URL}`;
 
   constructor(private http: HttpClient) {}
 
