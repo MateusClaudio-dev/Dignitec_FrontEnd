@@ -1,5 +1,5 @@
 // Para produção Vercel
 export const environment = {
     production: false,
-    API_URL: 'https://dignitecbackend-production-5ee4.up.railway.app'
+    API_URL: 'https://dignitec-backend.onrender.com'
 };
